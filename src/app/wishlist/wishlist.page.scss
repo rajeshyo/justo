@@ -1,0 +1,72 @@
+// ion-grid{
+//     width: 100%;
+//     border-bottom: 1px solid black;
+//   }
+
+//   ion-col{
+//     margin: auto;
+//     color:'medium';
+//     font-family: 'Open Sans', sans-serif;
+//     font-size: 15px;
+//   }
+
+  .main-bag1{
+    display: flex;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 1%;
+    color: black;
+    
+}
+.bag11{
+    width: 50%;
+    margin-left: 2px;
+    height: 70%;
+   border: 1px solid rgb(187, 175, 175); 
+}
+
+.bag12{
+    width: 50%;
+    margin-left: 2px;
+    height: 70%;
+    border: 1px solid rgb(187, 175, 175); 
+}
+.main-bag2{
+    display: flex;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 1%;
+}
+.bag21{
+    width: 50%;
+    margin-left: 2px;
+    height: 70%;
+    border: 1px solid rgb(187, 175, 175); 
+}
+
+.bag22{
+    width: 50%;
+    margin-left: 2px;
+    height: 70%;
+    border: 1px solid rgb(187, 175, 175); 
+}
+.cart_btn{
+    font-size: 10px;
+    width:70%;
+    height: 2.5em;
+}
+
+
+ion-grid{
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
+
+  ion-col{
+    margin: auto;
+    color:'medium';
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+  }

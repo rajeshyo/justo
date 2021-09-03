@@ -1,0 +1,77 @@
+
+    <!-- Header -->
+    <ion-header >
+      <ion-toolbar >
+    
+        <ion-grid>
+          <ion-row>
+             <ion-col size="2">
+                <div>
+                   <ion-buttons slot="start">
+                      <ion-menu-button color="Medium"></ion-menu-button>
+                   </ion-buttons> 
+                </div>
+             </ion-col>
+
+             <ion-col size="6">
+                <div style="font-size: 18px;"><b>Items</b> </div>
+             </ion-col>
+
+             <ion-col size="2">
+                <div > <mat-icon>search</mat-icon></div>
+             </ion-col>
+
+             <!-- <ion-col size="2">
+                <div><mat-icon>bookmark_border</mat-icon></div>
+             </ion-col> -->
+
+             <ion-col size="2">
+                <div routerLink="/cart" routerDirection="root"> <mat-icon>shopping_cart</mat-icon></div>
+             </ion-col>
+          </ion-row>
+       </ion-grid>  
+                 
+         
+    
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+   <div class="banner">
+       <img class="banner-style" src="assets/img/banner-bag2.png"/>
+  </div>
+  
+      <ion-card style="border-radius: 0%;">
+          <div class="wom">
+              <strong>Women Collection</strong>
+          </div>
+      </ion-card>
+
+            <ion-card >
+               <div class="cat-women">
+                  <div class="women-bag">
+                      <p routerLink="/womenbag" routerDirection="root"><strong> Women Bags</strong></p>
+                  </div> 
+
+                    <div class="women-jwl">
+                       <p routerLink="/jewellery" routerDirection="root"> <strong>Jewellery</strong></p>
+                    </div>
+
+                        <div class="gown">
+                          <p><strong> Gown</strong></p>
+                        </div>
+
+                            <div class="wo-acc">
+                               <p><strong> Women Accessories</strong></p>
+                            </div>
+                </div>
+             </ion-card> 
+
+</ion-content>
+
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/home"></ion-back-button>
+  </ion-buttons>
+ 
+
+ 

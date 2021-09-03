@@ -1,0 +1,362 @@
+<!-- Header -->
+
+
+<!-- <ion-header >
+            <ion-toolbar >
+               <div class="main-logo">
+                   <div class="menu">
+                       <ion-buttons slot="start">
+                       <ion-menu-button color="Medium"></ion-menu-button>
+                       </ion-buttons>  
+                   </div>
+                    <div class="Home"><b>OnlineShop</b> </div>
+                    <div class="search"> <mat-icon>search</mat-icon></div>
+                    <div class="wish"><mat-icon>bookmark_border</mat-icon></div> 
+                    <div class="basket"> <mat-icon>shopping_cart</mat-icon></div>        
+               </div>          
+            </ion-toolbar>
+          </ion-header>               -->
+
+
+
+
+
+
+<!-- Page Swiper Tab -->
+<ion-toolbar>
+
+   <ion-grid>
+      <ion-row>
+         <ion-col size="2">
+            <div>
+               <ion-buttons slot="start">
+                  <ion-menu-button color="Medium"></ion-menu-button>
+               </ion-buttons>
+            </div>
+         </ion-col>
+
+         <ion-col size="4">
+            <div style="font-size: 17px;">
+
+               <img src="../../assets/logo.jpeg" style="max-width: 70%;">
+               <!-- <b>Justo</b>  -->
+            </div>
+         </ion-col>
+
+         <ion-col size="2" style="text-align: end;">
+            <div>
+               <mat-icon (click)="search()">search</mat-icon>
+            </div>
+         </ion-col>
+
+         <ion-col size="2" style="text-align: end;">
+            <div>
+               <mat-icon (click)="wishlist()" >bookmark_border</mat-icon>
+            </div>
+         </ion-col>
+
+         <ion-col size="2" style="text-align: end;">
+            <div routerLink="/cart" routerDirection="root">
+               <mat-icon>shopping_cart</mat-icon>
+            </div>
+         </ion-col>
+      </ion-row>
+   </ion-grid>
+
+   <!-- <ion-segment [(ngModel)]="page" color="secondary">
+      <ion-segment-button value="0" (click)="selectedTab(0)" color="danger;">
+         Home
+      </ion-segment-button>
+      <ion-segment-button value="1" (click)="selectedTab(1)">
+         Category
+      </ion-segment-button>
+   </ion-segment> -->
+</ion-toolbar>
+
+
+
+
+<ion-content>
+  
+
+   
+   <ion-slides #slider (ionSlideWillChange)="moveButton()">
+
+      <!-- Home Page -->
+      <ion-slide>
+         <div class="c1">
+            <!-- image slider -->
+            <div  >
+               <ion-slides class="image-slider" loop="false" pager="true" [options]="slideOptsOne" #slideWithNav
+                  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1" style=" width: 100%;">
+
+                  <!-- <ion-slide *ngFor="let img of images">
+                     <img src="assets/img/{{img}}" class="thumb-img">
+                  </ion-slide> -->
+
+
+                  <ion-slide *ngFor="let deal of deals">
+                     <img (click)="productdata(deal.id)" src="{{deal.imagePath}}" class="thumb-img">
+                     <div class="dealtimer">{{deal.timeLeft.h}}h {{deal.timeLeft.m}}m Left</div>
+                  </ion-slide>
+               </ion-slides>
+               <!-- <img src="assets/img/e4.png"> -->
+
+            </div>
+         
+            <!-- <ion-item-divider></ion-item-divider> <br> -->
+            <br><mat-card style="background-color: lightcyan;">
+            <ion-grid style="border-bottom: none;">
+               <ion-row>
+                  <ion-col class="productcat" *ngFor="let productcat of cdata;let i = index"
+                     style="text-align: -webkit-center;margin: 0%;" routerLink="/gown" routerDirection="root">
+                     <div>
+                        <img (click)="productdata(productcat.id)" src="{{productcat.imagePath}}"
+                           style="max-height: 50px;">
+                     </div>
+                     <div (click)="productdata(productcat.id)" class=tx style="color: black;">{{productcat.label}}</div>
+                  </ion-col>
+
+               </ion-row>
+            </ion-grid>
+            </mat-card > <br>
+            <!-- <ion-item-divider></ion-item-divider> <br> -->
+
+            <div  >
+               <ion-slides class="image-slider" loop="false" pager="true" [options]="slideOptsOne" #slideWithNav
+                  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1" style=" width: 100%;">
+
+                  <!-- <ion-slide *ngFor="let img of images">
+                     <img src="assets/img/{{img}}" class="thumb-img">
+                  </ion-slide> -->
+
+
+                  <ion-slide *ngFor="let deal1 of deals1">
+                     <img (click)="productdata(deal1.id)" src="{{deal1.imagePath}}" class="thumb-img">
+                  </ion-slide>
+               </ion-slides>
+               <!-- <img src="assets/img/e4.png"> -->
+
+            </div>
+
+            <div *ngFor="let topproductcat of topdata;let i = index">
+               <ion-card>
+
+                  <!-- <img src="{{topproductcat.imagePath}}" style="max-height: 140px;"> -->
+
+               </ion-card>
+
+
+               <mat-card style="background-color: bisque;">
+                  <!-- <div class=wn> -->
+                  <ion-card-title style="color: rgb(82, 79, 79);">
+                     {{topproductcat.label}}
+                  </ion-card-title>
+                  <ion-item-divider style="background-color: bisque;">
+                     <ion-label style="font-size: 11px;">
+                        <!-- {{topproductcat.label}} Category -->
+                     </ion-label>
+                  </ion-item-divider>
+                  <!-- </div> -->
+
+
+
+
+                  <div class="ccn" style="display: flex;margin-top: 1em;" routerLink="/gown" routerDirection="root">
+                     <ion-slides class="image-slider" loop="false" pager="false" [options]="slideOptsTwo" #slideWithNav
+                        (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1"
+                        style=" width: 100%; ">
+                        <ion-slide *ngFor="let img of topproductcat.SubCategory">
+                           <!-- <p style="color: black; font-size: 10px;">{{img.label}}</p>
+                        <img src="{{img.imagePath}}"  class="thumb-img"> -->
+
+
+                           <ion-grid style="border-bottom: none;">
+                              <ion-row>
+                                 <ion-col class="productcat" style="text-align: -webkit-center;margin: 0%;"
+                                    routerLink="/gown" routerDirection="root">
+                                    <div>
+                                       <img (click)="productdata(img.id)" src="{{img.imagePath}}"
+                                          style="max-height: 50px;">
+                                    </div>
+                                    <div class=tx style="color: black;" (click)="productdata(img.id)">{{img.label}}
+                                    </div>
+                                 </ion-col>
+
+                              </ion-row>
+                           </ion-grid>
+                        </ion-slide>
+                     </ion-slides>
+                  </div>
+
+
+                  
+               </mat-card>
+
+            </div>
+          
+
+            <div >
+               <ion-card>
+
+                  <!-- <img src="{{topproductcat.imagePath}}" style="max-height: 140px;"> -->
+
+               </ion-card>
+
+
+               <mat-card >
+                  <!-- <div class=wn> -->
+                  <ion-card-title style="color: rgb(82, 79, 79);">
+                    <!-- Brand -->
+                  </ion-card-title>
+              
+                  <!-- </div> -->
+
+
+
+
+                  <div class="ccn" style="display: flex;margin-top: 1em;"  routerDirection="root">
+                     <ion-slides class="image-slider" loop="false" pager="false" [options]="slideOptsTwo" #slideWithNav
+                        (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1"
+                        style=" width: 100%; ">
+                        <ion-slide *ngFor="let branddata of brand">
+                           <!-- <p style="color: black; font-size: 10px;">{{img.label}}</p>
+                        <img src="{{img.imagePath}}"  class="thumb-img"> -->
+
+
+                           <ion-grid style="border-bottom: none;">
+                              <ion-row>
+                                 <ion-col class="productcat" style="text-align: -webkit-center;margin: 0%;"
+                                   routerDirection="root">
+                                    <div>
+                                       <img  src="{{branddata.imagePath}}"
+                                          style="max-height: 50px;">
+                                    </div>
+                                    <div class=tx style="color: black;" >
+                                       <!-- {{branddata.label}} -->
+                                    </div>
+                                 </ion-col>
+
+                              </ion-row>
+                           </ion-grid>
+                        </ion-slide>
+                     </ion-slides>
+                  </div>
+
+
+                  
+               </mat-card>
+
+            </div>
+
+            <!-- 
+            <mat-card>
+               <div class=wn>
+                  <b> Men</b>
+               </div>
+            </mat-card>
+
+
+            <div class="ccn" style="display: flex; margin-top: 1em;">
+               <ion-slides class="image-slider" loop="false" pager="false" [options]="slideOptsThree" #slideWithNav
+                  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1" style=" width: 100%; ">
+                  <ion-slide *ngFor="let img of image1">
+                     <img src="assets/img/{{img}}" class="thumb-img">
+                  </ion-slide>
+               </ion-slides>
+            </div>
+
+
+            <mat-card>
+               <div class=wn> <b> Accessories</b> </div>
+            </mat-card>
+
+            <div class="ccn" style="display: flex; margin-top: 1em;">
+               <ion-slides class="image-slider" loop="false" pager="false" [options]="slideOptsFourth" #slideWithNav
+                  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1" style=" width: 100%; ">
+                  <ion-slide *ngFor="let img of image2">
+                     <img src="assets/img/{{img}}" class="thumb-img">
+                  </ion-slide>
+               </ion-slides>
+            </div> -->
+
+            <!-- <ion-card>
+
+               <img src="assets/img/e3.png">
+
+            </ion-card> -->
+         </div>
+      </ion-slide>
+
+      <!-- Product-Category  -->
+      <ion-slide>
+         <!-- <ion-card> -->
+         <ion-grid>
+            <ion-row>
+               <ion-col size="6" *ngFor="let productcat of cdata;let i = index"
+                  style="text-align: -webkit-center;margin: 0%; ">
+                  <div style="height: 150px; position: relative;">
+                     <img (click)="productdata(productcat.id)" class="img-responsive productcatimg"
+                        src="{{productcat.imagePath}}" routerLink="/gown">
+                  </div>
+                  <div (click)="productdata(productcat.id)" class=tx style="color: black; font-size: 12px;">
+                     {{productcat.label}}</div>
+               </ion-col>
+            </ion-row>
+         </ion-grid>
+         <!-- </ion-card> -->
+      </ion-slide>
+   <!-- Product-Profile  -->
+      <ion-slide>
+        
+         <ion-card style="background-color: lightcyan; width: 100%;">
+        
+              
+            <!-- <ion-button> -->
+               <!-- <ion-icon name="star"></ion-icon> -->
+               <!-- <ion-icon name="create"></ion-icon> -->
+             <!-- </ion-button> -->
+            <ion-card-header>
+            
+               <ion-card-title style="color: black;">Profile Details
+                  <ion-icon  (click)="profileedit()" name="pencil" color="warning"></ion-icon>
+               
+               </ion-card-title>
+               <img src="{{userdata.imagename}}" style="height: 80px; border-radius: 100%;">
+             </ion-card-header>
+          
+            <ion-card-content style="color: black;">
+              <ion-label>First Name: {{userdata.first_name}}</ion-label> <br>
+              <ion-label>Last Name: {{userdata.last_name}}</ion-label> <br>
+              <ion-label>Email: {{userdata.email1}}</ion-label> <br>
+              <ion-label>Phone : {{userdata.phone_work}}</ion-label> <br>
+              <ion-label>User Name: {{userdata.user_name}}</ion-label> <br>
+
+            </ion-card-content>
+          </ion-card>
+
+
+      </ion-slide>
+   </ion-slides>
+
+
+   <!-- Menu -->
+<div class="menuu">
+   <ion-segment  [(ngModel)]="page" color="secondary">
+      <ion-segment-button value="0" (click)="selectedTab(0)" color="danger;">
+         <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="1" (click)="selectedTab(1)">
+         <ion-icon name="apps"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="2" (click)="selectedTab(2)">
+         <ion-icon name="person"></ion-icon>
+      </ion-segment-button>
+   </ion-segment>
+
+  
+   
+</div> 
+<br><br><br>
+
+</ion-content>

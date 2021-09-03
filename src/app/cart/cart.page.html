@@ -1,0 +1,259 @@
+
+   
+    <ion-header >
+      <ion-toolbar >
+    
+        <ion-grid>
+          <ion-row>
+             <ion-col size="2">
+                <div>
+                   <ion-buttons slot="start">
+                      <ion-menu-button color="Medium"></ion-menu-button>
+                   </ion-buttons> 
+                </div>
+             </ion-col>
+
+             <ion-col size="4.9">
+                <div style="font-size: 17px;"><b>Shopping Bag</b> </div>
+             </ion-col>
+
+             <ion-col size="1.8">
+                <div > <mat-icon>search</mat-icon></div>
+             </ion-col>
+
+             <ion-col size="1.8">
+                <div><mat-icon (click)="wishlistbtn()" >bookmark_border</mat-icon></div>
+             </ion-col>
+
+             <ion-col size="1.5">
+                <div> <mat-icon>shopping_cart</mat-icon></div>
+             </ion-col>
+          </ion-row>
+       </ion-grid> 
+     </ion-toolbar>
+  </ion-header>        
+         
+    
+  
+     
+<ion-content>
+  <mat-card style=" background: #f1f1f1;">
+      <div>
+           SHOPPING BAG
+      </div>
+  </mat-card>
+      
+  <!-- <ion-card>
+     <ion-card-header>
+        <div class="offer" *ngFor="let productlist of fdata;let i = index">
+       
+        </div>
+
+        <div class="offer1">
+           <ul>  <li>10% SuperCash on Mobikwik wallet. </li>
+              <li>Flat Rs 200 Cashback on PhonePay.</li>
+           </ul>
+        </div>
+   </ion-card-header>
+ </ion-card> -->
+
+
+ <ion-card *ngFor="let productlist of fdata;let i = index">
+      <div class="main" >
+         <div class="pic">
+            <img src={{productlist.imagename}}   >
+           
+            <!-- <img   src="{{final.imagePath}}"/> -->
+         </div>
+
+         <div class="content" style="color: #fff;" >
+            {{productlist.productname}}  <br>
+            Mrp: {{productlist.unit_price}}
+            <!-- {{productlist.product_no}}  -->
+         
+             <!-- Luxury Stylish Bag <br> -->
+             <!-- <i class="fa fa-inr"><b>{{final.discount_percent}}</b></i> -->
+         </div>
+     </div>
+     <mat-card >
+         <div class="main_edit">
+               <div style="width: 5%;">
+                  
+               </div>
+             <div class="edit" >
+                  <p text-center tappable (click)="removeItem()"  >
+              <strong>Remove</strong>
+            </p>
+               </div>
+               <div class="blank">
+  
+               </div>
+               <div class="remove" >
+                  <p text-center tappable (click)="wishlist(productlist.id)"  >
+              <strong>Move to Wishlist</strong>
+
+                        <!-- <a href="/wishlist" >    <strong > Move To Wishlist</strong></a> -->
+               </p>
+                 </div>
+         </div>
+         </mat-card>
+        
+  </ion-card>
+
+
+
+<!-- 
+
+<ion-card >
+   <div class="main">
+      <div class="pic">
+         <img   src="assets/img/4a.png"/>
+      </div>
+
+      <div class="content">
+          Beautiful Elegance Green <br> Luxury Stylish Bag <br><i class="fa fa-inr"><b>1199</b></i>
+      </div>
+  </div>
+  <mat-card>
+      <div class="main_edit">
+            <div style="width: 5%;">
+            </div>
+          <div class="edit" >
+               <p text-center tappable (click)="removeItem()"  >
+           <strong>Remove</strong>
+         </p>
+            </div>
+            <div class="blank">
+|
+            </div>
+            <div class="remove" >
+                
+                     <a href="/wishlist" >    <strong > Move To Wishlist</strong></a>
+            
+              </div>
+       </div>
+      </mat-card>
+     
+</ion-card>
+
+
+
+
+<ion-card >
+   <div class="main">
+      <div class="pic">
+         <img   src="assets/img/shirt1.png"/>
+      </div>
+
+      <div class="content">
+          Beautiful Elegance Green <br> Luxury Stylish Bag <br><i class="fa fa-inr"><b>1199</b></i>
+      </div>
+  </div>
+  <mat-card>
+      <div class="main_edit">
+            <div style="width: 5%;">
+            </div>
+          <div class="edit" >
+               <p text-center tappable (click)="removeItem()"  >
+           <strong>Remove</strong>
+         </p>
+            </div>
+            <div class="blank">
+|
+            </div>
+            <div class="remove" >
+                
+                     <a href="/wishlist" >    <strong > Move To Wishlist</strong></a>
+            
+              </div>
+              </div>
+      </mat-card>
+     
+</ion-card> -->
+
+
+ <mat-card>
+     <div class="container-fluid www" >
+        <div class="row">
+            <div class="col-md-12">
+                <b> Price Details</b>
+            </div>
+       </div>
+   </div>
+</mat-card>
+
+ <mat-card>
+    <div class="cat-women">
+        <div class="women-bag">
+               <span style="color: black;"> <strong>Total MRP</strong></span>
+            <div class="content1"  style="text-align: right; width: 50%;color: black;">
+               <i class="fa fa-inr"><strong>1199</strong></i> 
+            </div>
+        </div> 
+ 
+           <div class="women-bag">
+            <span style="color: black;"><strong> Coupon Discount</strong></span>
+                <div class="content1"  >
+                    <b style=" color: rgb(252, 155, 171);"><strong>Apply Coupon</strong></b>
+                 </div>
+           </div>
+ 
+          <div class="women-bag">
+            <span style="color: black;"><strong>  Delivery Charges</strong></span>
+             <div class="content1">
+               <i class="fa fa-inr" style="text-decoration: line-through;color: black;"><strong>  199 </strong></i> 	&nbsp; <strong>FREE </strong>
+            </div>
+          </div>
+   </div>
+</mat-card> 
+
+      <mat-card >
+          <div class="total">
+               <b>Total</b>
+             <div class="content1"  >
+                <i class="fa fa-inr"><b>1199</b></i>
+             </div>
+         </div>
+      </mat-card>
+     
+</ion-content>
+
+<ion-toolbar>
+   <ion-buttons slot="start">
+     <ion-back-button defaultHref="/women"></ion-back-button>
+  </ion-buttons>
+      <div class="container" style="margin-bottom: .3em;">
+         <div class="pull-right"  >
+           <ion-button color="dark" routerLink="/newaddress"  routerDirection="root" style="width: 80%; font-size: 12px; height: 2.5em;">Place Order</ion-button> 
+         </div>
+     </div>
+</ion-toolbar>
+
+    
+
+
+
+
+
+
+
+    <!-- <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>My Cart</ion-title>
+      </ion-toolbar>
+    </ion-header>
+     
+    <ion-content>
+      <ion-list>
+        <ion-item *ngFor="let item of selectedItems" lines="inset">
+          {{ item.count }}x {{ item.name }} - {{ item.price | currency:'USD':'symbol' }}
+          <ion-label slot="end" text-right>{{ (item.price * item.count) | currency:'USD':'symbol' }}</ion-label>
+        </ion-item>
+        <ion-item>
+          Total: <span slot="end">{{ total | currency:'USD':'symbol' }}</span>
+        </ion-item>
+      </ion-list>
+    </ion-content> -->

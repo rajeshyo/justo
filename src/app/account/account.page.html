@@ -1,0 +1,89 @@
+
+      <!-- Header -->
+      <ion-header >
+        <ion-toolbar color="light" >
+            <ion-buttons slot="start" >
+                <ion-back-button defaultHref="/home"></ion-back-button>
+              </ion-buttons>
+          <ion-title style="font-family: 'Open Sans', sans-serif; font-size: 17px;">Account</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+           <!-- Profile -->
+        <ion-content class="profile">
+          <ion-card no-margin>
+            <ion-card-content class="bg-profile">
+               <img src="assets/img/avi.png">
+              <h1 class="fw500">Jack Joe</h1>
+              </ion-card-content>
+            </ion-card>
+      
+      
+           
+      
+             <!-- Other Page-Links -->
+      
+          <mat-card>
+            <div  class="main"  routerLink="/order" routerDirection="root" >
+               <div style="width: 20%;">
+                  <ion-icon slot="start" name="cube" color="dark" ></ion-icon>
+               </div>
+               <div class="content"  >
+                  Orders
+               </div>
+            </div>
+              
+              
+                 <br> <div class="main" routerLink="/help" routerDirection="root">
+                         <div style="width: 20%;">
+                            <ion-icon slot="start" name="help-circle-outline" color="dark" ></ion-icon>
+                         </div>
+                         <div class="content">
+                             Help Center
+                         </div>
+            
+                      </div>
+                    
+                        <br><div class="main" routerLink="/wishlist" routerDirection="root">
+                              <div style="width: 20%;">
+                                <ion-icon slot="start" name="heart-outline" color="dark"></ion-icon>
+                                
+                              </div>
+                              <div class="content">
+                                  Wishlist
+                              </div>
+                            </div>
+      
+                          <br><div class="main" routerLink="/address" routerDirection="root">
+                                 <div style="width: 20%;">
+                                    <ion-icon slot="start" name="pin" color="dark" ></ion-icon>
+                                 </div>
+                                 <div class="content">
+                                     Address
+                                 </div>
+                              </div>
+      
+                            <br><div class="main" routerLink="/profile" routerDirection="root">
+                                   <div style="width: 20%;">
+                                        <ion-icon slot="start" name="document" color="dark" ></ion-icon>
+                                   </div>
+                                   <div class="content">
+                                         Profile Details
+                                   </div>
+                                </div>
+      
+                              <br><div class="main" routerLink="/signup" routerDirection="root">
+                                      <div style="width: 20%;">
+                                          <ion-icon slot="start" name="log-out" color="dark" ></ion-icon>
+                                      </div>
+                                     <div class="content">
+                                         Logout
+                                     </div>
+                                  </div>
+                         
+            </mat-card>
+        </ion-content> 
+        
+       
+      
+      

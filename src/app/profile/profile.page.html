@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-family: 'Open Sans', sans-serif; font-size: 17px;">Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile">
+  <ion-card no-margin>
+    <ion-card-content class="bg-profile">
+      <img src="assets/img/avi.png">
+      <h1 class="fw500">Jack Joe</h1>
+      <!-- <h2 color="light" margin-bottom>Customer</h2> -->
+      <ion-button icon-left color="secondary" style=" height: 2em; font-size: 12px; ">
+        <ion-icon name="camera-outline" zoom="1"></ion-icon> 
+        Edit 
+      </ion-button>
+    </ion-card-content>
+  
+    <ion-grid fixed no-padding>
+      <ion-row>
+        <ion-col size="12" padding>
+
+          <ion-list margin-bottom>
+            <!-- <ion-list-header color="light">
+              <ion-label class="fw700">Form</ion-label>
+            </ion-list-header> -->
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">Full Name:</ion-label>
+              <ion-input inputmode="text" placeholder="Ex..: Jack Joe" value=""></ion-input>
+            </ion-item>
+
+          
+
+              <ion-item>
+                  <ion-label color="dark" position="stacked">Mobile Number:</ion-label>
+                  <ion-input type="text"  inputmode="numeric" name="zip" placeholder="Ex.: 1765757345" value=""></ion-input>
+                </ion-item>
+    
+            <ion-item>
+              <ion-label color="dark" position="stacked">Email:</ion-label>
+              <ion-input inputmode="email" placeholder="Ex.: avii@gmail.com" value=""></ion-input>
+            </ion-item>
+
+           
+    
+            
+
+
+            <ion-item>
+                <ion-label color="dark" position="stacked">City:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Greator Noida"></ion-input>
+              </ion-item>
+  
+
+    
+           
+    
+            <ion-item>
+              <ion-label color="dark" style="font-size: 14px;">State</ion-label>
+              <ion-select>
+                <ion-select-option value="nes">UP</ion-select-option>
+                <ion-select-option value="n64">MP</ion-select-option>
+                <ion-select-option value="ps">Rajsthan</ion-select-option>
+                <ion-select-option value="genesis">AP</ion-select-option>
+                <ion-select-option value="saturn">SP</ion-select-option>
+                <ion-select-option value="snes">Kantō</ion-select-option>
+                <ion-select-option value="snes">Delhi</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+          <ion-list >
+              <ion-radio-group >
+                <ion-list-header color="light">
+                  <ion-label class="fw700">Gender</ion-label>
+                </ion-list-header>
+            
+                <ion-item style="font-size: 13px;font-family: 'Open Sans', sans-serif;">
+                  <ion-label color="">Male</ion-label>
+                  <ion-radio slot="start" value="Male" checked></ion-radio>
+                </ion-item>
+            
+                <ion-item style="font-size: 13px;font-family: 'Open Sans', sans-serif;">
+                  <ion-label color="" >Female</ion-label>
+                  <ion-radio slot="start" value="Female"></ion-radio>
+                </ion-item>
+
+                <p text-center tappable (click)="forgotPass()" class="paz" style="font-family: 'Open Sans', sans-serif;">
+                    <ion-text color="dark">
+                    <br> <strong>Change Password?</strong>
+                    </ion-text>
+                 </p>
+
+
+
+
+              </ion-radio-group>
+  
+              
+            </ion-list> 
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </ion-card>
+      <mat-card>
+        <ion-button size="small"  color="dark" (click)="sendData()"  expand="block" no-margin>Save Details</ion-button>
+      </mat-card>
+  
+
+ 
+
+
+</ion-content>

@@ -1,0 +1,198 @@
+
+
+   <!-- Header Logo -->
+
+   <ion-header >
+    <ion-toolbar >
+    
+      <ion-grid>
+        <ion-row>
+           <ion-col size="2">
+              <div>
+                 <ion-buttons slot="start">
+                    <ion-menu-button color="Medium"></ion-menu-button>
+                 </ion-buttons> 
+              </div>
+           </ion-col>
+  
+           <ion-col size="4">
+              <div style="font-size: 18px;"><b>Shirt</b> </div>
+           </ion-col>
+  
+           <ion-col size="1.5">
+              <div > <mat-icon>search</mat-icon></div>
+           </ion-col>
+  
+           <ion-col size="1.5">
+              <div routerLink="/wishlist" routerDirection="root"><mat-icon>favorite_border</mat-icon></div>
+           </ion-col>
+  
+           <ion-col size="3">
+            <div routerLink="/cart" routerDirection="root">
+              <ion-buttons slot="end" style="width: 100%;">
+                  <ion-button  color="Medium" style="width: 100%;">
+                    <ion-badge color="danger"  *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
+                    <ion-icon slot="icon-only" name="cart" ></ion-icon>
+                  </ion-button>
+              </ion-buttons>
+            </div>
+           </ion-col>
+        </ion-row>
+     </ion-grid>        
+                 
+          
+    
+     </ion-toolbar>
+</ion-header>
+
+
+    <!-- Swiper Page Tab -->
+<ion-toolbar>
+   <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="page" color="secondary">
+      <ion-segment-button value="0" (click)="selectedTab(0)">
+          Shirt
+      </ion-segment-button>
+      <ion-segment-button value="1" (click)="selectedTab(1)">
+          Jeans
+      </ion-segment-button>
+   </ion-segment> 
+</ion-toolbar>
+
+
+<ion-content>
+ <ion-slides #slider (ionSlideWillChange)="moveButton()">
+           <!-- Men Shirt Page -->
+   <ion-slide>
+         
+    <mat-card >
+           <div class="main11">
+             <div class="main-bag">
+         
+                 <div class="bag1">
+                  <img class="bag-purse" src="assets/img/shirt1.png" routerLink="/shirtdetail" routerDirection="root" /><b>Blue Shirt <br><i class="fa fa-inr">899</i></b>
+                   <div style="margin-left: 20%;">
+                   <ion-button expand="full" class="cart_btn" (click)="addToCart(product)"  color="dark" >Add to Cart</ion-button>
+                   </div>
+                 </div>
+                 <div class="bag2">
+                   <img class="bag-purse" src="assets/img/shirt2.png" /><b> Stylish Shirt  <br><i class="fa fa-inr">1199</i></b>
+                   <div style="margin-left: 20%;">
+                    <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                  </div>
+                 </div>
+                 
+              </div>   
+          
+          <div class="main-bag1">
+              <div class="bag11">
+                <img class="bag-purse" src="assets/img/shirt3.png" /><b>Off White Shirt <br><i class="fa fa-inr">799</i></b>
+                <div style="margin-left: 20%;">
+                  <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                </div>
+              </div>
+                <div class="bag12">
+                    <img class="bag-purse" src="assets/img/shirt1.png" /><b> Blue Shirt <br><i class="fa fa-inr">899</i></b>
+                    <div style="margin-left: 20%;">
+                      <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                    </div>
+                </div>
+            </div>   
+      
+            <div class="main-bag2">
+                <div class="bag21">
+                  <img class="bag-purse" src="assets/img/shirt2.png" /><b>Stylish Shirt <br><i class="fa fa-inr">999</i></b>
+                  <div style="margin-left: 20%;">
+                    <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                  </div>
+                 </div>
+                  <div class="bag22">
+                      <img class="bag-purse" src="assets/img/shirt3.png" /><b> Off White Shirt <br><i class="fa fa-inr">1599</i></b>
+                      <div style="margin-left: 20%;">
+                        <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                      </div>
+                  </div>
+              </div>   
+              </div>
+          </mat-card>
+      </ion-slide>
+
+
+
+
+
+
+     
+
+
+       <!-- Men Jeans Page -->
+    <ion-slide>
+        
+        <mat-card >
+            <div class="main11">
+               <div class="main-bag">
+         
+                 <div class="bag1">
+                  <img class="bag-purse" src="assets/img/jeans1.png"  ><b>Stylish Jeans <br><i class="fa fa-inr">899</i></b>
+                  <div style="margin-left: 20%;">
+                  <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                  </div>
+                 </div>
+
+                 <div class="bag2">
+                   <img class="bag-purse" src="assets/img/jeans2.png" /><b> Shaded Jeans <br><i class="fa fa-inr">1199</i></b>
+                   <div style="margin-left: 20%;">
+                   <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                   </div>
+                 </div>
+                 
+              </div>   
+          
+          <div class="main-bag1">
+              <div class="bag11">
+                <img class="bag-purse" src="assets/img/jeans3.png" /><b>Blue Jeans <br><i class="fa fa-inr">799</i></b>
+                <div style="margin-left: 20%;">
+                  <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                </div>
+              </div>
+                  <div class="bag12">
+                    <img class="bag-purse" src="assets/img/jeans1.png" /><b> Stylish Jeans <br><i class="fa fa-inr">899</i></b>
+                    <div style="margin-left: 20%;">
+                      <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                    </div>
+                  </div>
+            </div>   
+      
+            <div class="main-bag2">
+                <div class="bag21">
+                  <img class="bag-purse" src="assets/img/jeans2.png" /><b>Shaded Jeans <br><i class="fa fa-inr">999</i></b>
+                  <div style="margin-left: 20%;">
+                    <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                  </div>
+                </div>
+                  <div class="bag22">
+                      <img class="bag-purse" src="assets/img/jeans3.png" /><b> Blue Jeans <br><i class="fa fa-inr">1599</i></b>
+                      <div style="margin-left: 20%;">
+                        <ion-button expand="full"  (click)="addToCart(product)" class="cart_btn" color="dark" >Add to Cart</ion-button>
+                      </div>
+                    </div>
+             </div>   
+         </div>
+       </mat-card>
+    </ion-slide>
+
+
+    
+
+
+
+
+
+
+       <!-- Back button -->
+    
+</ion-slides> 
+
+</ion-content>
+<ion-buttons slot="start">
+   <ion-back-button defaultHref="/home"></ion-back-button>
+</ion-buttons>

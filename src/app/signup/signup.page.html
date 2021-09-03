@@ -1,0 +1,422 @@
+<!-- Banner -->
+<div class="banner">
+  <img class="banner-style" src="assets/img/logicon.png" />
+</div>
+
+<!-- Page Swiper -->
+<ion-toolbar>
+  <ion-segment [(ngModel)]="page" class="segment" color="secondary">
+    <ion-segment-button value="0" (click)="selectedTab(0)" class="seg">
+      <b>LOG IN</b>
+    </ion-segment-button>
+   
+    <ion-segment-button value="1" (click)="selectedTab(1)" class="seg1">
+      <b> Dealer </b>
+    </ion-segment-button>
+
+    <ion-segment-button value="2" (click)="selectedTab(2)" class="seg2">
+      <b>vendor </b>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<ion-content>
+  <ion-slides #slider (ionSlideWillChange)="moveButton()">
+    <!-- lOGiN pAGE -->
+    <ion-slide>
+      <div class="sign-container">
+        <form class="sign-form">
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Username" [(ngModel)]=" userlog.username" [formControl]="passFormControl"type="text"  
+              required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+          
+             <mat-form-field style="width: 100%; color:black;  margin-bottom: 10%;">
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]=" userlog.password" [formControl]="passFormControl"
+              [formControl]="passFormControl" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              Please enter your password
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              Minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <div class="button" (click)="login()" routerDirection="root">
+            <button mat-flat-button style="width: 100%;  background: black; color:white">Log In</button>
+          </div> 
+
+          <p text-center tappable (click)="forgotPass()" class="paz">
+            <ion-text color="dark">
+              <br> <strong>Forgot Password?</strong>
+            </ion-text>
+          </p>
+
+        </form>
+      </div>
+    </ion-slide>
+  <!-- SIGN UP PAGE Dealer -->
+  <ion-slide>
+    <div class="sign-container">
+      <form class="sign-form">
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your first name" type="text" [(ngModel)]="user1.accountname"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your first name
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Last Name" type="text" [(ngModel)]="user1.cf_885"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Last Name
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Username" type="text" [(ngModel)]="user1.cf_893"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Username
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Password" type="password" [(ngModel)]="user1.cf_895"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Password
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Firm Name" type="text" [(ngModel)]="user1.cf_891"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Firm Name
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Firm Type"  type="text" [(ngModel)]="user1.cf_887"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Firm Type
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Firm Address" type="text" [(ngModel)]="user1.bill_street" [formControl]="passFormControl"
+            required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Firm Address
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your Registered Mobile Number" type="text" [(ngModel)]="user1.phone"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your Registered Mobile Number
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your email" type="email" [(ngModel)]="user1.email1" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter your GSTN Number" type="text" [(ngModel)]="user1.cf_889"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your GSTN Number
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field style="width: 100%; color:black;">
+          <input matInput placeholder="Enter Pan card" type="text" [(ngModel)]="user1.cf_873"
+            [formControl]="passFormControl" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter Pan card
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field>
+
+
+        <!-- <mat-form-field style="width: 100%; color:black;"> -->
+         <label style="color: black;">GSTN certificate</label> 
+         <input   type="file" id="myfile" 
+            [formControl]="passFormControl" required>
+            <br>  <br>
+          <!-- <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter your GSTN certificate
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error> -->
+        <!-- </mat-form-field> -->
+
+
+
+     
+
+
+        <label style="color: black;">Visiting card</label>  
+         <input   type="file" id="myfile1" 
+            [formControl]="passFormControl" required>
+
+
+<!-- 
+        <mat-form-field style="width: 100%; color:black;  margin-bottom: 10%;">
+          <input matInput placeholder="Enter visiting card" type="file" [(ngModel)]="user1.cf_873"
+            [formControl]="passFormControl" required>
+          
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            please enter visiting card
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">
+            minimum 4 characters
+          </mat-error>
+        </mat-form-field> -->
+
+        <div class="button">
+          <button mat-flat-button style="width: 100%;  background: black; color:white" (click)="submitdealer()">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </ion-slide>
+
+    <!-- SIGN UP PAGE Vendor-->
+    <ion-slide>
+      <div class="sign-container">
+        <form class="sign-form">
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your first name" type="text" [(ngModel)]="user.vendorname"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your first name
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Last Name" type="text" [(ngModel)]="user.cf_875"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Last Name
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Username" type="text" [(ngModel)]="user.cf_897"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Username
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Password" type="password" [(ngModel)]="user.cf_899"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Password
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Firm Name" type="text" [(ngModel)]="user.cf_877"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Firm Name
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Firm Type"  type="text" [(ngModel)]="user.cf_879"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Firm Type
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Firm Address" type="text" [(ngModel)]="user.street" [formControl]="passFormControl"
+              required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Firm Address
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your Registered Mobile Number" type="text" [(ngModel)]="user.phone"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your Registered Mobile Number
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your email" type="email" [(ngModel)]="user.email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your GSTN Number" type="text" [(ngModel)]="user.cf_881"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your GSTN Number
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter your GSTN certificate" type="file" [(ngModel)]="user.email1"
+              [formControl]="passFormControl" required>
+        
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter your GSTN certificate
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field> -->
+
+
+
+          <mat-form-field style="width: 100%; color:black;">
+            <input matInput placeholder="Enter Pan card" type="text" [(ngModel)]="user.cf_883"
+              [formControl]="passFormControl" required>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter Pan card
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field>
+
+
+          <label style="color: black;">GSTN certificate</label> 
+          <input   type="file" id="myfile" 
+             [formControl]="passFormControl" required>
+             <br>  <br>
+             
+          <label style="color: black;">Visiting card</label>  
+           <input   type="file" id="myfile1" 
+              [formControl]="passFormControl" required>
+
+<!-- 
+          <mat-form-field style="width: 100%; color:black;  margin-bottom: 10%;">
+            <input matInput placeholder="Enter visiting card" type="file" [(ngModel)]="user.cf_873"
+              [formControl]="passFormControl" required>
+            
+            <mat-error *ngIf="passFormControl.hasError('required')">
+              please enter visiting card
+            </mat-error>
+            <mat-error *ngIf="passFormControl.hasError('minlength')">
+              minimum 4 characters
+            </mat-error>
+          </mat-form-field> -->
+
+          <div class="button">
+            <button mat-flat-button style="width: 100%;  background: black; color:white" (click)="submitvendor()">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </ion-slide>
+
+    
+  </ion-slides>
+</ion-content>
+
+<div class="content">
+  <br> ---OR JOIN WITH---
+</div>
+
+<div class="flex-container">
+  <div> <img src="https://img.icons8.com/color/30/000000/facebook-circled.png"></div>
+  <div> <img src="https://img.icons8.com/color/30/000000/google-plus.png"></div>
+
+</div>

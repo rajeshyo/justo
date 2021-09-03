@@ -1,0 +1,203 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- <div class="main-logo">
+          <div class="menu">
+             <ion-buttons slot="start">
+                 <ion-menu-button color="Medium"></ion-menu-button>
+             </ion-buttons>  
+          </div>
+              <div class="gown">Gown </div>
+              
+               <div class="search"> <mat-icon>search</mat-icon></div>
+               <div class="wish"><mat-icon>favorite_border</mat-icon></div> 
+             
+              <div routerLink="/cart" routerDirection="root">
+                <ion-buttons slot="end">
+                    <ion-button  color="Medium">
+                      <ion-badge color="danger" *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
+                      <ion-icon slot="icon-only" name="cart"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+              </div>
+      </div> -->
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          <div>
+            <ion-buttons slot="start">
+              <ion-back-button defaultHref="/home"></ion-back-button>
+            </ion-buttons>
+            <!-- <ion-buttons slot="start">
+              <ion-menu-button color="Medium"></ion-menu-button>
+            </ion-buttons> -->
+          </div>
+        </ion-col>
+
+        <ion-col size="4">
+          <div style="font-size: 18px;"><b>Product List</b> </div>
+        </ion-col>
+
+        <ion-col size="1.5" style="text-align: end;">
+          <div>
+            <mat-icon>search</mat-icon>
+          </div>
+        </ion-col>
+
+        <ion-col size="1.5" style="text-align: end;">
+          <div routerLink="/wishlist" routerDirection="root">
+            <mat-icon>favorite_border</mat-icon>
+          </div>
+        </ion-col>
+
+        <ion-col size="3">
+          <div routerLink="/cart" routerDirection="root">
+            <ion-buttons slot="end" style="width: 100%;">
+              <ion-button color="Medium" style="width: 100%;">
+                <ion-badge color="danger" *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
+                <ion-icon slot="icon-only" name="cart"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <!-- <mat-card> -->
+
+    <!-- <div class="main11">
+      <div class="main-bag">
+        <ion-grid style="border-bottom: none;">
+          <ion-row>
+            <ion-col class="productcat" *ngFor="let productlist of topdata;let i = index"
+              style="text-align: -webkit-center;margin: 0%;" routerLink="/gown" routerDirection="root">
+              <div class="bag1">
+                <img class="bag-purse" src="{{productlist.imagePath}}" style="max-height: 50px;">
+              </div>
+              <div class=tx style="color: black;">{{productlist.label}}</div>
+              <div class="main_cart_btn">
+                <ion-button class="cart_btn" expand="full" (click)="addToCart(product)" color="dark">Add To Cart
+                </ion-button>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div> -->
+
+
+    <!-- <div class="main11">
+      <div class="main-bag">
+
+        <div class="bag1">
+          <img class="bag-purse" src="assets/img/y.png" routerLink="/details" routerDirection="root" /><b>Floral Gown
+            <br><i class="fa fa-inr">899</i></b>
+          <div class="main_cart_btn">
+            <ion-button class="cart_btn" expand="full" (click)="addToCart(product)" color="dark">Add To Cart
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="bag2">
+          <img class="bag-purse" src="assets/img/z.png" /><b> Fashionable Gown <br><i class="fa fa-inr">1199</i></b>
+          <div class="main_cart_btn">
+            <ion-button class="cart_btn" expand="full" (click)="addToCart(product)" color="dark">Add To Cart
+            </ion-button>
+          </div>
+        </div>
+
+      </div>
+
+    </div> -->
+
+
+  <!-- </mat-card> -->
+<!-- main cat product list -->
+  <ion-grid>
+    <ion-row>
+       <ion-col size="6" *ngFor="let productlist of topdata;let i = index"
+          style="text-align: -webkit-center;margin: 0%; "  >
+          <div style="height: 150px; position: relative;">
+             <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+          </div>
+          <div>
+            <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
+            <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">Price: {{productlist.unit_price}}</div>
+          </div>
+     
+          <div class="main_cart_btn">
+            <ion-button class="cart_btn" expand="full" (click)="detailproduct(productlist.id)" color="warning">Add To Cart
+            </ion-button>
+          </div>
+       </ion-col>
+    </ion-row>
+ </ion-grid>
+<!-- Subcat product list-->
+ <ion-grid>
+  <ion-row>
+     <ion-col size="6" *ngFor="let productlist of topdata1;let i = index"
+        style="text-align: -webkit-center;margin: 0%; "  >
+        <div style="height: 150px; position: relative;">
+           <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+        </div>
+        <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
+        <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">Price: {{productlist.unit_price}}</div>
+        <div class="main_cart_btn">
+          <ion-button class="cart_btn" expand="full" (click)="detailproduct(productlist.id)" color="warning">Add To Cart
+          </ion-button>
+        </div>
+     </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- Deals Product List -->
+<ion-grid>
+  <ion-row>
+     <ion-col size="6" *ngFor="let productlist of deals;let i = index"
+        style="text-align: -webkit-center;margin: 0%; "  >
+        <div style="height: 150px; position: relative;">
+           <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+        </div>
+        <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
+        <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.discount_percent}}%</div>
+        <div class="main_cart_btn">
+          <ion-button class="cart_btn" expand="full"(click)="cartdata(productlist)" (click)="detailproduct(productlist.id)"  color="warning">Add To Cart
+          </ion-button>
+        
+        </div>
+     </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Deals1 Product List -->
+<!-- <ion-grid>
+  <ion-row>
+     <ion-col size="6" *ngFor="let productlist1 of deals1;let i = index"
+        style="text-align: -webkit-center;margin: 0%; "  >
+        <div style="height: 150px; position: relative;">
+           <img class="img-responsive productcatimg" src="{{productlist1.imagePath}}" routerLink="/gown" >
+        </div>
+        <div class=tx style="color: black; font-size: 12px;">{{productlist1.label}}</div>
+        <div class=tx style="color: black; font-size: 12px;">{{productlist1.discount_percent}}%</div>
+        <div class="main_cart_btn">
+          <ion-button class="cart_btn" expand="full"(click)="cartdata(productlist1)"  (click)="addToCart(product)"  color="warning">Add To Cart
+          </ion-button>
+        
+        </div>
+     </ion-col>
+  </ion-row>
+</ion-grid> -->
+
+</ion-content>
+
+
+<ion-buttons slot="start">
+  <ion-back-button defaultHref="/home"></ion-back-button>
+</ion-buttons>

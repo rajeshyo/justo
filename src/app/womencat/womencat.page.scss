@@ -1,0 +1,94 @@
+
+ .main-logo{
+    display: flex;
+     width: 100%;
+    
+     border-bottom: 1px solid #f1f1f1;
+  
+   }
+  
+   .menu{
+   width: 15%;
+   }
+   .Home{
+     margin-top: .3em;
+     padding: 0;
+     font-family: 'Open Sans', sans-serif;
+     font-size: 15px;
+     color: black;
+     width: 54%;;
+   }
+   .basket{
+     width: 15%;
+     margin-top: .3em;
+     color:'medium';
+   }
+   .search{
+    width: 15%;
+    margin-top: .3em;
+    color:'medium';
+   }
+  
+  
+  
+  
+  .banner{
+      width: 100%;
+    //  margin-top: 10px;
+     height: 65%;
+     
+  }
+  .banner-style{
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+    .cat-women{
+      font-size: 12px;
+      margin-left: 15px;
+     margin-top: 15px;
+      letter-spacing: .5px;
+      font-weight: lighter;
+      font-family: 'Open Sans', sans-serif;
+      color: black;
+      
+    }
+    
+  
+    .www{
+      background-color: #80deea;
+      border: 1px;
+      text-align: left;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+     height: 3em;
+      letter-spacing: .5px;
+      border-radius: 10px;
+    
+    }
+    .col-md-12{
+      padding: 12px;
+      
+    }
+    .wom{
+      background-color: #f1f1f1;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: .5px;
+    
+     padding: 1%;
+    }
+
+    ion-grid{
+        width: 100%;
+        border-bottom: 1px solid black;
+      }
+    
+      ion-col{
+        margin: auto;
+        color:'medium';
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+      }
+      

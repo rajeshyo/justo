@@ -1,0 +1,44 @@
+.profile {
+    ion-card {
+      width: 100%;
+      border-radius: 0;
+      background-color: #fff;
+      ion-card-content {
+       // padding: 32px;
+        // background-color: var(--ion-color-secondary);
+        
+        color: black;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        img {
+          height: 128px;
+          width: 128px;
+          border-radius: 50%;
+          border: solid 4px #fff;
+          display: inline;
+          box-shadow: 0 0 28px rgba(255,255,255, .65);
+          font-family: 'Open Sans', sans-serif;
+        }
+    }
+}}
+
+mat-card{
+  border-radius: 0%;
+  padding-right: 0%;
+ font-family: 'Open Sans', sans-serif;
+}
+ 
+.content{
+  color:black;
+  font-family: Open Sans, sans-serif; 
+  font-size: 13px;
+   border-bottom: solid .5px rgb(194, 189, 189);
+    width: 85%;
+    padding: 0%;
+}
+ion-icon{
+  zoom:1.8;
+}
+.main{
+  display: flex;
+}
