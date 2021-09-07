@@ -134,7 +134,7 @@
           </div>
      
           <div class="main_cart_btn">
-            <ion-button class="cart_btn" expand="full" (click)="detailproduct(productlist.id)" color="warning">Add To Cart
+            <ion-button class="cart_btn" expand="full" (click)="addtocart(productlist.id)" (click)="detailproduct(productlist.id)" color="warning">Add To Cart
             </ion-button>
           </div>
        </ion-col>
@@ -151,7 +151,7 @@
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">Price: {{productlist.unit_price}}</div>
         <div class="main_cart_btn">
-          <ion-button class="cart_btn" expand="full" (click)="detailproduct(productlist.id)" color="warning">Add To Cart
+          <ion-button class="cart_btn" expand="full" (click)="addtocart(productlist.id)" (click)="detailproduct(productlist.id)" color="warning">Add To Cart
           </ion-button>
         </div>
      </ion-col>
@@ -168,7 +168,7 @@
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.discount_percent}}%</div>
         <div class="main_cart_btn">
-          <ion-button class="cart_btn" expand="full"(click)="cartdata(productlist)" (click)="detailproduct(productlist.id)"  color="warning">Add To Cart
+          <ion-button class="cart_btn" expand="full" (click)="addtocart(productlist.id)" (click)="cartdata(productlist)" (click)="detailproduct(productlist.id)"  color="warning">Add To Cart
           </ion-button>
         
         </div>

@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 import {SignupService} from '../services/signup.service'
 import { ToastService } from '../services/toast.service';
 import { environment } from '../../environments/environment';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -44,6 +45,7 @@ export class SignupPage implements OnInit{
     private http: HttpClient,
     private delarapi:SignupService,
     private toastService: ToastService, 
+    public popoverController: PopoverController,
     ) { 
 
   }
@@ -63,20 +65,33 @@ export class SignupPage implements OnInit{
   async forgotPass() {
     
      // message: 'Enter you email address to send a reset link password.',
-      const { value: email } = await swal.fire({
+      const { value: email} = await swal.fire({
         title: 'Forgot Password?',
         text: 'Enter your email address to send a reset link password.',
         showCancelButton: true,
         input: 'email',
+      
         inputPlaceholder: 'Enter your email'
-      })
+      },)
       
       if (email) {
         swal.fire(`Entered email: ${email}`)
       }
+     
   }
  
+  // async presentPopover(ev: any) {
+  //   const popover = await this.popoverController.create({
+  //     component: PopoverComponent,
+  //     cssClass: 'my-custom-class',
+  //     event: ev,
+  //     translucent: true
+  //   });
+  //   await popover.present();
 
+  //   const { role } = await popover.onDidDismiss();
+  //   console.log('onDidDismiss resolved with role', role);
+  // }
 
  submitdealer() {
     // const params = new URLSearchParams(
@@ -176,6 +191,8 @@ export class SignupPage implements OnInit{
     .then(response => {
       this.data = response;
       localStorage.setItem('logindata', JSON.stringify(this.data.result.login.userdetails));
+      localStorage.setItem('userid', JSON.stringify(this.data.result.login.userid));
+
       localStorage.setItem('session', this.data.result.login.session);
       // localStorage.setItem('userdata', this.data);
 

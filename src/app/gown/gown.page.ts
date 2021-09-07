@@ -19,6 +19,8 @@ import { ActivatedRoute } from '@angular/router';
 import {Router} from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+ 
 @Component({
   selector: 'app-gown',
      templateUrl: './gown.page.html',
@@ -40,6 +42,7 @@ export class GownPage implements OnInit {
   items = [];
   datareceive:String="";
   constructor(
+    public navCtrl: NavController,
     public router:Router,
     private http: HttpClient,
     private cartService: CartService,
@@ -72,6 +75,58 @@ export class GownPage implements OnInit {
     this.router.navigate(['cart'],{queryParams:{data:maindata}})
     console.log("router id",data)
   }
+
+
+  addtocart(id) {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    const orderdetails = localStorage.getItem('orderdetails');
+
+    var formdata = new FormData();
+    formdata.append('_operation','addToCart');
+    formdata.append('_session',session);
+    formdata.append('productId',id);
+    formdata.append('userId',userid);
+    formdata.append('qty',"1");
+
+
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals1 =this.data.result.products
+      console.log("cartdataaa",this.data.result.products);
+      this.navCtrl.navigateRoot('/cart');
+      return this.topdata1;
+
+    })
+    .catch(console.log);
+
+
+  } 
+  // addtocart() {
+  //   let url = environment.baseurl
+  //   const session = localStorage.getItem('session');
+  //   var formdata = new FormData();
+  //   formdata.append('_operation','getProductsBySubCategory');
+  //   formdata.append('_session',session);
+  //   formdata.append('id',this.finaldt);
+
+
+  //   this.http.post( url,formdata,{})
+  //   .toPromise()
+  //   .then(response => {
+  //     this.data = response;
+  //     this.topdata =this.data.result.products
+  //     console.log("productlist",this.data.result.products);
+  //     return this.topdata;
+  //   })
+  //   .catch(console.log);
+
+
+  // }
+
 
   productlist() {
     let url = environment.baseurl

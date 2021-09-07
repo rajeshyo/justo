@@ -26,7 +26,7 @@
              </ion-col>
 
              <ion-col size="1.5">
-                <div> <mat-icon>shopping_cart</mat-icon></div>
+                <div> <mat-icon>shopping_cart </mat-icon><p style="color: red; margin-top: -50px; margin-left: 8px;">{{this.cart.length}}</p></div>
              </ion-col>
           </ion-row>
        </ion-grid> 
@@ -37,6 +37,8 @@
   
      
 <ion-content>
+
+  
   <mat-card style=" background: #f1f1f1;">
       <div>
            SHOPPING BAG
@@ -58,16 +60,21 @@
  </ion-card> -->
 
 
- <ion-card *ngFor="let productlist of fdata;let i = index">
-      <div class="main" >
+ <ion-card *ngFor="let productlist of cart;let i = index">
+      <div class="main" style="background-color: cadetblue;">
          <div class="pic">
-            <img src={{productlist.imagename}}   >
+            <img src={{productlist.imagePath}}  style="height: 90px; width: 50%;" >
            
             <!-- <img   src="{{final.imagePath}}"/> -->
          </div>
 
          <div class="content" style="color: #fff;" >
-            {{productlist.productname}}  <br>
+            Qty
+            <button (click)="qtyde(productlist.id)">-</button>
+          <input type="number" style="width: 60px;" [(ngModel)]="user.cartqty">
+          <button (click)="qtyin(productlist.id)">+</button>
+            <br>
+            {{productlist.label}}  <br>
             Mrp: {{productlist.unit_price}}
             <!-- {{productlist.product_no}}  -->
          
@@ -81,7 +88,7 @@
                   
                </div>
              <div class="edit" >
-                  <p text-center tappable (click)="removeItem()"  >
+                  <p text-center tappable (click)="removeaddtocart(productlist.id)"  >
               <strong>Remove</strong>
             </p>
                </div>

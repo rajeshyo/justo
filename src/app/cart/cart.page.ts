@@ -22,6 +22,8 @@ export class CartPage {
   sliderTwo: any;
   sliderThree: any;
  
+
+  user:any ={}
   finaldt:any;
   datareceive:String="";
   final:any;
@@ -29,6 +31,9 @@ fdata: any;
   data: any;
   deals1=[]
   topdata1=[]
+  topdata=[]
+  cart=[]
+  addtocart1=[]
   //Configuration for each Slider
   slideOptsOne = {
     initialSlide: 0,
@@ -149,7 +154,7 @@ fdata: any;
     const orderdetails = localStorage.getItem('orderdetails');
     this.fdata = JSON.parse(orderdetails)
 
-console.log("gh",JSON.parse(orderdetails))
+    console.log("gh",JSON.parse(orderdetails))
     this.activatedRouter.queryParams.subscribe((data)=>{
         // this.finaldt = data;
         //  this.datareceive =JSON.stringify(data);
@@ -159,7 +164,7 @@ console.log("gh",JSON.parse(orderdetails))
         // console.log("addtocart",this.final)
     })
 
-    // this.orderdateails();
+    this.addtocart();
   }
 
 
@@ -215,6 +220,125 @@ console.log("gh",JSON.parse(orderdetails))
     .catch(console.log);
 
 
+  }
+  addtocart() {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    const orderdetails = localStorage.getItem('orderdetails');
+
+    var formdata = new FormData();
+    formdata.append('_operation','getCartProducts');
+    formdata.append('_session',session);
+    // formdata.append('productId',id);
+    formdata.append('userId',userid);
+    // formdata.append('qty',"1");
+
+
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.cart =this.data.result.products
+      console.log("count",this.cart.length)
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      return this.cart;
+
+    })
+    .catch(console.log);
+
+
+  } 
+
+  removeaddtocart(id) {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    const orderdetails = localStorage.getItem('orderdetails');
+
+    var formdata = new FormData();
+    formdata.append('_operation','removeProductFromCart');
+    formdata.append('_session',session);
+    formdata.append('productId',id);
+    formdata.append('userId',userid);
+    // formdata.append('qty',"1");
+
+
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals1 =this.data.result.products
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      this.addtocart()
+      return this.topdata1;
+
+    })
+    .catch(console.log);
+
+
+  } 
+  qtyin(id){
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    const orderdetails = localStorage.getItem('orderdetails');
+
+    var formdata = new FormData();
+    formdata.append('_operation','addToCart');
+    formdata.append('_session',session);
+    formdata.append('productId',id);
+    formdata.append('userId',userid);
+    formdata.append('action',"increase");
+    formdata.append('qty',this.user.cartqty);
+ 
+
+
+
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals1 =this.data.result.products
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      this.addtocart()
+      return this.topdata1;
+
+    })
+    .catch(console.log);
+  }
+  qtyde(id){
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    const orderdetails = localStorage.getItem('orderdetails');
+
+    var formdata = new FormData();
+    formdata.append('_operation','addToCart');
+    formdata.append('_session',session);
+    formdata.append('productId',id);
+    formdata.append('userId',userid);
+    formdata.append('action',"decrease");
+    formdata.append('qty',this.user.cartqty);
+ 
+
+
+
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals1 =this.data.result.products
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      this.addtocart()
+      return this.topdata1;
+
+    })
+    .catch(console.log);
   }
   async removeItem() {
     const alert = await this.alertCtrl.create({
