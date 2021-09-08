@@ -70,9 +70,9 @@
 
          <div class="content" style="color: #fff;" >
           
-            <button (click)="qtyde(productlist.id)">-</button>
-          <input type="number" style="width: 60px;" [(ngModel)]="user.cartqty">
-          <button (click)="qtyin(productlist.id)">+</button>
+            <button (click)="qtyde(i)">-</button>
+          <input type="number" style="width: 60px;" [value]="productlist.quantity" [(ngModel)]="productlist.quantity">
+          <button (click)="qtyin(i)">+</button>
             <br>
             Qty {{this.deals1}}
             <br>
