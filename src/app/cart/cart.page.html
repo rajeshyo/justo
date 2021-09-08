@@ -69,10 +69,12 @@
          </div>
 
          <div class="content" style="color: #fff;" >
-            Qty
+          
             <button (click)="qtyde(productlist.id)">-</button>
           <input type="number" style="width: 60px;" [(ngModel)]="user.cartqty">
           <button (click)="qtyin(productlist.id)">+</button>
+            <br>
+            Qty {{this.deals1}}
             <br>
             {{productlist.label}}  <br>
             Mrp: {{productlist.unit_price}}
@@ -231,7 +233,9 @@
   </ion-buttons>
       <div class="container" style="margin-bottom: .3em;">
          <div class="pull-right"  >
-           <ion-button color="dark" routerLink="/newaddress"  routerDirection="root" style="width: 80%; font-size: 12px; height: 2.5em;">Place Order</ion-button> 
+           <ion-button color="dark"
+        
+            (click)="placeorder()" routerDirection="root" style="width: 80%; font-size: 12px; height: 2.5em;">Place Order</ion-button> 
          </div>
      </div>
 </ion-toolbar>

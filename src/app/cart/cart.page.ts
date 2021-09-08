@@ -34,6 +34,7 @@ fdata: any;
   topdata=[]
   cart=[]
   addtocart1=[]
+  Integer:any
   //Configuration for each Slider
   slideOptsOne = {
     initialSlide: 0,
@@ -225,6 +226,8 @@ fdata: any;
     let url = environment.baseurl
     const session = localStorage.getItem('session');
     const userid = localStorage.getItem('userid');
+    // const foo = this.Integer.parseInt(userid);
+    // let y = +userid; 
     const orderdetails = localStorage.getItem('orderdetails');
 
     var formdata = new FormData();
@@ -280,6 +283,8 @@ fdata: any;
 
 
   } 
+
+
   qtyin(id){
     let url = environment.baseurl
     const session = localStorage.getItem('session');
@@ -302,14 +307,16 @@ fdata: any;
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("cartdataaa",this.data.result.products);
+      console.log("quantity",this.data.result.quantity);
       // this.navCtrl.navigateRoot('/cart');
       this.addtocart()
-      return this.topdata1;
+      return this.deals1;
 
     })
     .catch(console.log);
   }
+
+
   qtyde(id){
     let url = environment.baseurl
     const session = localStorage.getItem('session');
@@ -340,6 +347,35 @@ fdata: any;
     })
     .catch(console.log);
   }
+
+
+
+  placeorder(){
+  let url = environment.baseurl
+  const session = localStorage.getItem('session');
+  const userid = localStorage.getItem('userid');
+  const orderdetails = localStorage.getItem('orderdetails');
+
+  var formdata = new FormData();
+  formdata.append('_operation','placeOrder');
+  formdata.append('_session',session);
+  
+  // formdata.append('module','SalesOrder');
+  // formdata.append('values',"this.cart");
+ 
+  this.http.post( url,formdata,{})
+  .toPromise()
+  .then(response => {
+    this.data = response;
+    this.topdata1 =this.data.result.products
+    console.log("plaace",this.data.result);
+    // this.navCtrl.navigateRoot('/cart');
+    this.addtocart()
+    return this.topdata1;
+
+  })
+  .catch(console.log);
+}
   async removeItem() {
     const alert = await this.alertCtrl.create({
       header: 'Item remove',

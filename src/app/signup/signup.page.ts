@@ -191,7 +191,7 @@ export class SignupPage implements OnInit{
     .then(response => {
       this.data = response;
       localStorage.setItem('logindata', JSON.stringify(this.data.result.login.userdetails));
-      localStorage.setItem('userid', JSON.stringify(this.data.result.login.userid));
+      localStorage.setItem('userid', this.data.result.login.userid);
 
       localStorage.setItem('session', this.data.result.login.session);
       // localStorage.setItem('userdata', this.data);
