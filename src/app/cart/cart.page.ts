@@ -34,7 +34,9 @@ fdata: any;
   topdata=[]
   cart=[]
   addtocart1=[]
-  Integer:any
+  Integer:any;
+  total: any;
+  subtotal: any;
   //Configuration for each Slider
   slideOptsOne = {
     initialSlide: 0,
@@ -245,6 +247,7 @@ fdata: any;
       this.cart =this.data.result.products
       console.log("count",this.cart.length)
       console.log("cartdataaa",this.data.result.products);
+      this.totalPrice();
       // this.navCtrl.navigateRoot('/cart');
       return this.cart;
 
@@ -276,8 +279,6 @@ fdata: any;
       console.log("cartdataaa",this.data.result.products);
       // this.navCtrl.navigateRoot('/cart');
       this.addtocart()
-      return this.topdata1;
-
     })
     .catch(console.log);
 
@@ -351,7 +352,6 @@ fdata: any;
 
   qtyin(index: number){
 
-    console.log('this.cart[index].quantity', this.cart[index].quantity);
     let url = environment.baseurl
     const session = localStorage.getItem('session');
     const userid = localStorage.getItem('userid');
@@ -365,19 +365,15 @@ fdata: any;
     formdata.append('userId',userid);
    // formdata.append('action',"increase");
     formdata.append('qty',this.cart[index].quantity);
- 
-
-
 
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("cartdataaa",this.data.result.products);
       // this.navCtrl.navigateRoot('/cart');
-      this.addtocart()
-      return this.topdata1;
+      this.addtocart();
+     // return this.topdata1;
 
     })
     .catch(console.log);
@@ -404,13 +400,27 @@ fdata: any;
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("cartdataaa",this.data.result.products);
       // this.navCtrl.navigateRoot('/cart');
       this.addtocart()
-      return this.topdata1;
+     // return this.topdata1;
 
     })
     .catch(console.log);
+  }
+
+
+  totalPrice() {
+    var price = 0;
+    var subPrice = 0;
+    for (let value of this.cart) {
+      let sub = value.unit_price * value.quantity;
+      subPrice = subPrice + sub;
+      price = price + sub;
+     
+    }
+    this.subtotal = subPrice;
+    this.total = price;
+
   }
 
 

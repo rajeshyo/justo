@@ -71,7 +71,7 @@
          <div class="content" style="color: #fff;" >
           
             <button (click)="qtyde(i)">-</button>
-          <input type="number" style="width: 60px;" [value]="productlist.quantity" [(ngModel)]="productlist.quantity">
+          <input type="number" style="width: 60px; color: black;" [value]="productlist.quantity" [(ngModel)]="productlist.quantity">
           <button (click)="qtyin(i)">+</button>
             <br>
             Qty {{this.deals1}}
@@ -194,9 +194,9 @@
  <mat-card>
     <div class="cat-women">
         <div class="women-bag">
-               <span style="color: black;"> <strong>Total MRP</strong></span>
+               <span style="color: black;"> <strong>Sub Total MRP</strong></span>
             <div class="content1"  style="text-align: right; width: 50%;color: black;">
-               <i class="fa fa-inr"><strong>1199</strong></i> 
+               <i class="fa fa-inr"><strong>{{subtotal}}</strong></i> 
             </div>
         </div> 
  
@@ -220,7 +220,7 @@
           <div class="total">
                <b>Total</b>
              <div class="content1"  >
-                <i class="fa fa-inr"><b>1199</b></i>
+                <i class="fa fa-inr"><b>{{total}}</b></i>
              </div>
          </div>
       </mat-card>
