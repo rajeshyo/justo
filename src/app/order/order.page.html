@@ -11,88 +11,42 @@
 <ion-content>
     <div class="main">
         <div class=pay>
-         ORDER NO: 1465-6755-7786
+         ORDER NO:
+          <!-- {{orderid.orders.orderNumber}} -->
         </div>
         <div class="order_detail">
          <a href="/order-cancel"> Order Details</a>
         </div>
     </div>
 
-    <mat-card class="od1">
-      <div class="main_detail">
+    <mat-card class="od1" *ngFor="let orderlist of orderlistdata;let i = index">
+      <div class="main_detail" *ngFor="let listdata of orderlist.productDetails;let i = index">
         <div class="img">
-            <img  class="img1" src="assets/img/l.png"/>
+            <img  class="img1" src={{listdata.imagePath}} />
         </div>
           <div class="content" >
-             <strong> Beautiful Floral Gown</strong> 
+       <p style="color: black;">Order id {{listdata.id}}</p> 
+
+             <strong> {{listdata.label}}</strong> 
             <div>
-                Size: XS|Qty:1
+                Qty:{{listdata.quantity}}
             </div>
             <div>
-              <i class="fa fa-inr"><b>1199</b></i>
+              <i class="fa fa-inr"><b>{{listdata.unit_price}}</b></i>
             </div>
             <div style="color:#19b0c4;">
-              <br>  <strong>Delivered (May,2018)</strong>
+              <br>  <strong>{{orderlist.orderStatus}}</strong><br>
+
+              <button (click)="cancelorder(orderlist.id)">Cancel Order</button>
             </div>
         </div>
       </div>
    </mat-card>
 
-      <div class="main" style="background-color: white; ">
+      <!-- <div class="main" style="background-color: white; ">
           <div class=pay>
              Bought for Avii
           </div>
-      </div>
+      </div> -->
 
-          <div style="height: 3%"> </div>
-           
-           <mat-card class="od1">
-              <div class="main_detail">
-                <div class="img">
-                    <img  class="img1" src="assets/img/4a.png"/>
-                </div>
-                <div class="content" >
-                    <strong> Beautiful Green Bag</strong> 
-                   <div>
-                      Size: XS|Qty:1
-                   </div>
-                   <div>
-                     <i class="fa fa-inr"><b>1199</b></i>
-                   </div>
-                   <div style="color:#19b0c4;">
-                     <br>  <strong>Delivered (May,2018)</strong>
-                   </div>
-                </div>
-              </div>
-           </mat-card>
-
-               <div class="main" style="background-color: white; ">
-                  <div class=pay>
-                      Bought for Avii
-                  </div>
-               </div>
-
-                    <div style="height: 3%"></div>
-                      
-                   <mat-card class="od1">
-                     <div class="main_detail">
-                         <div class="img">
-                             <img  class="img1" src="assets/img/4a.png"/>
-                         </div>
-                         <div class="content" >
-                           <strong> Beautiful Green Bag</strong> 
-                              <div>
-                                  Size: XS|Qty:1
-                              </div>
-                              <div>
-                                 <i class="fa fa-inr"><b>1199</b></i>
-                              </div>
-                              <div style="color:#19b0c4;">
-                                 <br>  <strong>Delivered (May,2018)</strong>
-                              </div>
-                         </div>
-                      </div>
-                .  </mat-card>
-                          <div style="height: 2%;">
-                            </div>
   </ion-content>

@@ -443,7 +443,7 @@ fdata: any;
     this.data = response;
     this.topdata1 =this.data.result.products
     console.log("plaace",this.data.result);
-    // this.navCtrl.navigateRoot('/cart');
+    this.navCtrl.navigateRoot('/order');
     this.addtocart()
     return this.topdata1;
 
