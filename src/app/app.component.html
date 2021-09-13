@@ -3,7 +3,7 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content >
         <ion-list id="inbox-list" >
-         <div style="border-bottom: 1px solid rgb(209, 209, 209);"> <ion-avatar slot="start" class="user-avi" style="height: 30%; width: 30%;">
+         <div *ngIf="userlogin == 1" style="border-bottom: 1px solid rgb(209, 209, 209);"> <ion-avatar slot="start" class="user-avi" style="height: 30%; width: 30%;">
             <img src="{{userdata.imagename}}" style="height: 80px;">
           </ion-avatar>
           <ion-list-header> {{userdata.first_name}}</ion-list-header>
