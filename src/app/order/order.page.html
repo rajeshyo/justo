@@ -22,7 +22,7 @@
     <mat-card class="od1" *ngFor="let orderlist of orderlistdata;let i = index">
       <div class="main_detail" *ngFor="let listdata of orderlist.productDetails;let i = index">
         <div class="img">
-            <img  class="img1" src={{listdata.imagePath}} />
+            <img  class="img1" src={{listdata.imagePath}} onerror="this.src='/assets/img/placeholder.png';" />
         </div>
           <div class="content" >
        <p style="color: black;">Order id {{listdata.id}}</p> 

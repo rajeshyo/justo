@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClientModule  } from '@angular/common/http';
 import {SignupService} from '../app/services/signup.service'
 import {HomeService} from '../app/services/home.service'
+import { AuthGuard } from './guard/auth.guard';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { VerificationPipe } from './verification.pipe';
     SignupService,
     HomeService,
     SplashScreen,
+    AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

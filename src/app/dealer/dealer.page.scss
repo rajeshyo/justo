@@ -1,0 +1,134 @@
+
+
+.investor {
+    border-radius: 5px;
+    box-shadow: 0 0 20px -6px #a6a1a1;
+    margin: 10px;
+
+    .first {
+        text-align: center;
+
+        ion-avatar {
+            margin: 0 auto;
+        }
+
+        img {
+            // width: 50px;
+            // height: 50px;
+            // margin-bottom: 10px;
+            // border-radius: 100px;
+            // overflow: hidden;
+        }
+
+        ion-label {
+            color: black;
+            font-size: 20px;
+            display: block;
+            margin-top: 10px;
+        }
+    }
+
+    .second {
+        ion-label {
+            color: black;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        ion-text {
+            font-size: 12px;
+            color: #0c5065;
+            display: block;
+            margin-bottom: 15px;
+            white-space: pre;
+
+            img {
+                margin-right: 1px;
+            }
+        }
+    }
+
+    .third {
+        ul {
+            li {
+                text-align: center;
+                margin-right: 10px;
+
+                span {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50px;
+                    display: block;
+                    margin: 0 auto;
+                }
+
+                ion-note {
+                    font-size: 12px;
+                    display: block;
+                    margin-top: 5px;
+                    color: #0c5065;
+                    // color: #fff;
+                }
+
+                span.warning {
+                    background: #edab23;
+                }
+
+                span.success {
+                    background: #5fae48;
+                }
+
+                span.danger {
+                    background: #fb1550;
+                }
+            }
+        }
+
+        // ul {
+        //     li {
+        //         font-size: 11px;
+        //         margin-bottom: 6px;
+        //         margin-left: 25px;
+        //     }
+        // }
+        // li:before {
+        //     position: absolute;
+        //     content: '';
+        //     width: 10px;
+        //     height: 10px;
+        //     left: 18px;
+        //     margin-right: 5px;
+        //     margin-top: 2px;
+        //     border-radius: 50px;
+        // }
+        // li.success:before {
+        //     background: #5fae48;
+        // }
+        // li.warning:before {
+        //     background: #edab23;
+        // }
+        // li.danger:before {
+        //     background: #fb1550;
+        // }
+    }
+
+    .investor-table {
+        width: 100%;
+
+        tr {
+            td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
+        tr:nth-child(odd) {
+            background: #f7fbff;
+        }
+
+        tr:nth-child(even) {
+            background: #e7f3ff;
+        }
+    }
+}

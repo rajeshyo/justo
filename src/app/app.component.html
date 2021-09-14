@@ -4,15 +4,12 @@
       <ion-content >
         <ion-list id="inbox-list" >
          <div *ngIf="userlogin == 1" style="border-bottom: 1px solid rgb(209, 209, 209);"> <ion-avatar slot="start" class="user-avi" style="height: 30%; width: 30%;">
-            <img src="{{userdata.imagename}}" style="height: 80px;">
+            <img src="{{userdata.imagename}}" style="height: 80px;" onerror="this.src='/assets/img/placeholder.png';">
           </ion-avatar>
           <ion-list-header> {{userdata.first_name}}</ion-list-header>
           <ion-note> {{userdata.email1}}</ion-note>
-          <ion-note> {{userdata.phone_work}}</ion-note>
-
-        
-        </div>
-          
+          <ion-note> {{userdata.phone_work}}</ion-note>        
+        </div>         
          
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index" >
             <ion-item (click)="selectedIndex = i" routerDirection="root"  [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
@@ -21,6 +18,16 @@
             </ion-item>
             
           </ion-menu-toggle>
+
+          <div *ngIf="userlogin == 1">
+          <ion-menu-toggle auto-hide="false" *ngIf="roleId == 'H11'">
+            <ion-item routerDirection="root"  routerLink="/dealer" lines="none" detail="false" >
+              <ion-icon slot="start" ios="people-outline" md="people-sharp" ></ion-icon>
+              <ion-label>My Dealers</ion-label>
+            </ion-item>
+            
+          </ion-menu-toggle>
+        </div>
         <ion-menu-toggle>
        <ion-item>
         <ion-icon slot="start"  name="log-out"></ion-icon>

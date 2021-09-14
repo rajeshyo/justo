@@ -12,7 +12,7 @@
 
   <ion-card no-margin>
     <ion-card-content class="bg-profile">
-      <img src="{{userInfo.imagename}}">
+      <img src="{{userInfo.imagename}}" onerror="this.src='/assets/img/placeholder.png';" >
       <h1 class="fw500">{{userInfo.first_name}} {{userInfo.last_name}}</h1>
       <!-- <h2 color="light" margin-bottom>Customer</h2> -->
       <ion-button icon-left color="secondary" style=" height: 2em; font-size: 12px; ">

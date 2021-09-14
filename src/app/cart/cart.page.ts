@@ -254,7 +254,6 @@ fdata: any;
     })
     .catch(console.log);
 
-
   } 
 
   removeaddtocart(id) {
@@ -282,72 +281,7 @@ fdata: any;
     })
     .catch(console.log);
 
-
   } 
-
-
-  /* qtyin(id){
-    let url = environment.baseurl
-    const session = localStorage.getItem('session');
-    const userid = localStorage.getItem('userid');
-    const orderdetails = localStorage.getItem('orderdetails');
-
-    var formdata = new FormData();
-    formdata.append('_operation','addToCart');
-    formdata.append('_session',session);
-    formdata.append('productId',id);
-    formdata.append('userId',userid);
-    formdata.append('action',"increase");
-    formdata.append('qty',this.user.cartqty);
- 
-
-
-
-    this.http.post( url,formdata,{})
-    .toPromise()
-    .then(response => {
-      this.data = response;
-      this.deals1 =this.data.result.products
-      console.log("quantity",this.data.result.quantity);
-      // this.navCtrl.navigateRoot('/cart');
-      this.addtocart()
-      return this.deals1;
-
-    })
-    .catch(console.log);
-  }
-
-
-  qtyde(id){
-    let url = environment.baseurl
-    const session = localStorage.getItem('session');
-    const userid = localStorage.getItem('userid');
-    const orderdetails = localStorage.getItem('orderdetails');
-
-    var formdata = new FormData();
-    formdata.append('_operation','addToCart');
-    formdata.append('_session',session);
-    formdata.append('productId',id);
-    formdata.append('userId',userid);
-    formdata.append('action',"decrease");
-    formdata.append('qty',this.user.cartqty);
- 
-
-
-
-    this.http.post( url,formdata,{})
-    .toPromise()
-    .then(response => {
-      this.data = response;
-      this.deals1 =this.data.result.products
-      console.log("cartdataaa",this.data.result.products);
-      // this.navCtrl.navigateRoot('/cart');
-      this.addtocart()
-      return this.topdata1;
-
-    })
-    .catch(console.log);
-  } */
 
 
   qtyin(index: number){
@@ -378,6 +312,7 @@ fdata: any;
     })
     .catch(console.log);
   }
+
   qtyde(index: number){
     let url = environment.baseurl
     const session = localStorage.getItem('session');

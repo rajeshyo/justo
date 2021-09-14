@@ -24,7 +24,7 @@
          <ion-col size="6" *ngFor="let productlist of Products;let i = index"
             style="text-align: -webkit-center;margin: 0%; "  >
             <div style="height: 150px; position: relative;">
-               <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+               <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" onerror="this.src='/assets/img/placeholder.png';"  >
             </div>
             <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
             <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.unit_price}}%</div>

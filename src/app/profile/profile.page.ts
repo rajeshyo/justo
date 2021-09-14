@@ -37,14 +37,17 @@ export class ProfilePage implements OnInit {
       firstname: new FormControl('', [ Validators.required, Validators.maxLength(150)]),
       lastname: new FormControl('', [Validators.required, Validators.maxLength(150)]),
       address: new FormControl('', [Validators.required]),
-     
-
+    
     });
   }
 
 
-  saveData() {
+  async saveData() {
+    const loader = await this.loadingCtrl.create({
+      duration: 2000
+    });
 
+    loader.present();
     console.log(this.userform);
   
     let url = environment.baseurl;
@@ -57,13 +60,13 @@ export class ProfilePage implements OnInit {
     formdata.append('last_name', this.userform.get('lastname').value);
     formdata.append('address_street', this.userform.get('address').value);
 
-        this.http.post( url,formdata,{})
+    this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
       this.data = response;
       
       // localStorage.setItem('userdata', this.data);
-
+      loader.dismiss();
       console.log(this.data);
 
        if (this.data.success == true) { 
