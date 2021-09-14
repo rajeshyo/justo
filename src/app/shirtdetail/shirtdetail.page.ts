@@ -77,6 +77,36 @@ export class ShirtdetailPage implements OnInit {
 
 
   }
+
+  addtocart(id) {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    const orderdetails = localStorage.getItem('orderdetails');
+
+    var formdata = new FormData();
+    formdata.append('_operation','addToCart');
+    formdata.append('_session',session);
+    formdata.append('productId',id);
+    formdata.append('userId',userid);
+    formdata.append('qty',"1");
+
+
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals1 =this.data.result.products
+      console.log("cartdataaa",this.data.result.products);
+      this.navCtrl.navigateRoot('/cart');
+      return this.topdata1;
+
+    })
+    .catch(console.log);
+
+
+  } 
+
   goToEditProfile() {
     this.navCtrl.navigateForward('/continue-shop');
   }

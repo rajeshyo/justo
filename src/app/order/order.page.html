@@ -25,8 +25,11 @@
             <img  class="img1" src={{listdata.imagePath}} onerror="this.src='/assets/img/placeholder.png';" />
         </div>
           <div class="content" >
-       <p style="color: black;">Order id {{listdata.id}}</p> 
-
+       <p style="color: black;">Order Id {{orderlist.id}}
+      Invoice: <a href={{orderlist.invoiceURL}} download><ion-icon name="download" style="font-size: 20px;"></ion-icon></a><br>
+      </p> 
+       <!-- <button >{{listdata.invoiceURL}}</button>  -->
+        <!-- <br> -->
              <strong> {{listdata.label}}</strong> 
             <div>
                 Qty:{{listdata.quantity}}
