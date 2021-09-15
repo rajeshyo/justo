@@ -36,6 +36,9 @@ export class WishlistPage implements OnInit {
     this.items = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
     this.getwishlist();
+
+    this.addtocart();
+
   }
 
   removewishlist(id) {
@@ -66,7 +69,37 @@ export class WishlistPage implements OnInit {
 
 
   }
+  addtocart() {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    // const foo = this.Integer.parseInt(userid);
+    // let y = +userid; 
+    const orderdetails = localStorage.getItem('orderdetails');
   
+    var formdata = new FormData();
+    formdata.append('_operation','getCartProducts');
+    formdata.append('_session',session);
+    // formdata.append('productId',id);
+    formdata.append('userId',userid);
+    // formdata.append('qty',"1");
+  
+  
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.cart =this.data.result.products
+      console.log("count",this.cart.length)
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      return this.cart;
+  
+    })
+    .catch(console.log);
+  
+  
+  }
   getwishlist() {
     let url = environment.baseurl
     const session = localStorage.getItem('session');

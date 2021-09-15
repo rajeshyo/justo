@@ -15,8 +15,13 @@
             <div style="font-size: 17px;"><b>Wishlist</b> </div>
          </ion-col>
 
-        
-
+         <ion-col size="2" style="text-align: end;">
+          <div routerLink="/cart" routerDirection="root">
+             <mat-icon>shopping_cart</mat-icon>
+             <p style="color: red; margin-top: -50px; margin-left: 8px;">{{this.cart.length}}</p>
+          </div>
+       </ion-col>
+<!-- 
          <ion-col size="3">
           <div routerLink="/cart" routerDirection="root">
             <ion-buttons slot="end" style="width: 100%;">
@@ -26,7 +31,7 @@
                 </ion-button>
             </ion-buttons>
           </div>
-         </ion-col>
+         </ion-col> -->
       </ion-row>
    </ion-grid> 
   </ion-toolbar>

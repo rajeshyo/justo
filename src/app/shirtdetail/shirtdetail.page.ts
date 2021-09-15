@@ -54,8 +54,40 @@ export class ShirtdetailPage implements OnInit {
 
     this.items = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
+
+    this.addtocart1();
+    this.getwishlist();
+
   }
 
+
+
+
+  getwishlist() {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const orderdetails = localStorage.getItem('orderdetails');
+  
+    var formdata = new FormData();
+    formdata.append('_operation','getWishListProducts');
+    formdata.append('_session',session);
+  
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals =this.data.result.products
+      console.log("getwishlist",this.data.result.products);
+      return this.deals;
+  
+    })
+    .catch(console.log);
+  
+  
+  }
+  wishlistbtn(){
+    this.navCtrl.navigateRoot('/wishlist');
+  }
   detailproduct() {
     let url = environment.baseurl
     const session = localStorage.getItem('session');
@@ -106,7 +138,37 @@ export class ShirtdetailPage implements OnInit {
 
 
   } 
-
+  addtocart1() {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    // const foo = this.Integer.parseInt(userid);
+    // let y = +userid; 
+    const orderdetails = localStorage.getItem('orderdetails');
+  
+    var formdata = new FormData();
+    formdata.append('_operation','getCartProducts');
+    formdata.append('_session',session);
+    // formdata.append('productId',id);
+    formdata.append('userId',userid);
+    // formdata.append('qty',"1");
+  
+  
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.cart =this.data.result.products
+      console.log("count",this.cart.length)
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      return this.cart;
+  
+    })
+    .catch(console.log);
+  
+  
+  }
   goToEditProfile() {
     this.navCtrl.navigateForward('/continue-shop');
   }

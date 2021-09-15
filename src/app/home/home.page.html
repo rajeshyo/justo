@@ -51,13 +51,17 @@
 
          <ion-col size="2" style="text-align: end;">
             <div>
-               <mat-icon (click)="wishlist()" >bookmark_border</mat-icon>
+               <!-- <mat-icon (click)="wishlistbtn()" >heart_border</mat-icon> -->
+            <mat-icon (click)="wishlistbtn()">favorite</mat-icon>
+           
+            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.deals.length}}</p>
             </div>
          </ion-col>
 
          <ion-col size="2" style="text-align: end;">
             <div routerLink="/cart" routerDirection="root">
                <mat-icon>shopping_cart</mat-icon>
+               <p style="color: red; margin-top: -50px; margin-left: 8px;">{{this.cart.length}}</p>
             </div>
          </ion-col>
       </ion-row>

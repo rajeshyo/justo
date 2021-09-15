@@ -13,8 +13,6 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 export class AppComponent implements OnInit {
 
   userdata:any
-  userlogin = 0;
-
 
   public selectedIndex = 0;
   public appPages = [
@@ -94,10 +92,6 @@ export class AppComponent implements OnInit {
   localdata(){
     const loginData = JSON.parse(localStorage.getItem('logindata'));
     this.userdata=loginData
-    if(this.userdata !=null){
-      this.userlogin =1;
-
-    }
   return this.userdata
   }
   

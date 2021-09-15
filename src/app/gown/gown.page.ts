@@ -66,17 +66,76 @@ export class GownPage implements OnInit {
     this.productlistbycat();
     this.dealsproduct();
     this.dealsproduct1();
+    this.addtocart1();
+    this.getwishlist();
 
   }
-
+  getwishlist() {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const orderdetails = localStorage.getItem('orderdetails');
+  
+    var formdata = new FormData();
+    formdata.append('_operation','getWishListProducts');
+    formdata.append('_session',session);
+  
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.deals =this.data.result.products
+      console.log("getwishlist",this.data.result.products);
+      return this.deals;
+  
+    })
+    .catch(console.log);
+  
+  
+  }
   cartdata(data){
     let maindata = JSON.stringify(data);
     localStorage.setItem('cartdata', maindata);
     this.router.navigate(['cart'],{queryParams:{data:maindata}})
     console.log("router id",data)
   }
+  wishlistbtn(){
+    this.navCtrl.navigateRoot('/wishlist');
+  }
+  search(){
+    this.navCtrl.navigateRoot('/search');
+  }
 
-
+  addtocart1() {
+    let url = environment.baseurl
+    const session = localStorage.getItem('session');
+    const userid = localStorage.getItem('userid');
+    // const foo = this.Integer.parseInt(userid);
+    // let y = +userid; 
+    const orderdetails = localStorage.getItem('orderdetails');
+  
+    var formdata = new FormData();
+    formdata.append('_operation','getCartProducts');
+    formdata.append('_session',session);
+    // formdata.append('productId',id);
+    formdata.append('userId',userid);
+    // formdata.append('qty',"1");
+  
+  
+    this.http.post( url,formdata,{})
+    .toPromise()
+    .then(response => {
+      this.data = response;
+      this.cart =this.data.result.products
+      console.log("count",this.cart.length)
+      console.log("cartdataaa",this.data.result.products);
+      // this.navCtrl.navigateRoot('/cart');
+      return this.cart;
+  
+    })
+    .catch(console.log);
+  
+  
+  }
   addtocart(id) {
     let url = environment.baseurl
     const session = localStorage.getItem('session');
