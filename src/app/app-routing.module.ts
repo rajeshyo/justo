@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from "./guard/auth.guard";
 
 const routes: Routes = [
   {
@@ -14,93 +13,63 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'gown',
-    loadChildren: () => import('./gown/gown.module').then( m => m.GownPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./gown/gown.module').then( m => m.GownPageModule)
   },
   {
     path: 'womenbag',
-    loadChildren: () => import('./womenbag/womenbag.module').then( m => m.WomenbagPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./womenbag/womenbag.module').then( m => m.WomenbagPageModule)
   },
   {
     path: 'shirt',
-    loadChildren: () => import('./shirt/shirt.module').then( m => m.ShirtPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./shirt/shirt.module').then( m => m.ShirtPageModule)
   },
   {
     path: 'jewellery',
-    loadChildren: () => import('./jewellery/jewellery.module').then( m => m.JewelleryPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./jewellery/jewellery.module').then( m => m.JewelleryPageModule)
   },
   {
     path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   },
   {
     path: 'cart',
-    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
   },
   {
     path: 'wishlist',
-    loadChildren: () => import('./wishlist/wishlist.module').then( m => m.WishlistPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./wishlist/wishlist.module').then( m => m.WishlistPageModule)
   },
   {
     path: 'account',
-    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
   },
   {
     path: 'order',
-    loadChildren: () => import('./order/order.module').then( m => m.OrderPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./order/order.module').then( m => m.OrderPageModule)
   },
   {
     path: 'order-cancel',
-    loadChildren: () => import('./order-cancel/order-cancel.module').then( m => m.OrderCancelPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./order-cancel/order-cancel.module').then( m => m.OrderCancelPageModule)
   },
   {
     path: 'help',
-    loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   },
   {
     path: 'address',
-    loadChildren: () => import('./address/address.module').then( m => m.AddressPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./address/address.module').then( m => m.AddressPageModule)
   },
   {
     path: 'newaddress',
-    loadChildren: () => import('./newaddress/newaddress.module').then( m => m.NewaddressPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./newaddress/newaddress.module').then( m => m.NewaddressPageModule)
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
     path: 'signup',
@@ -108,45 +77,31 @@ const routes: Routes = [
   },
   {
     path: 'womencat',
-    loadChildren: () => import('./womencat/womencat.module').then( m => m.WomencatPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./womencat/womencat.module').then( m => m.WomencatPageModule)
   },
   {
     path: 'payment',
-    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   },
   {
     path: 'payment-confirm',
-    loadChildren: () => import('./payment-confirm/payment-confirm.module').then( m => m.PaymentConfirmPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./payment-confirm/payment-confirm.module').then( m => m.PaymentConfirmPageModule)
   },
   {
     path: 'bagdetail',
-    loadChildren: () => import('./bagdetail/bagdetail.module').then( m => m.BagdetailPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./bagdetail/bagdetail.module').then( m => m.BagdetailPageModule)
   },
   {
     path: 'continue-shop',
-    loadChildren: () => import('./continue-shop/continue-shop.module').then( m => m.ContinueShopPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./continue-shop/continue-shop.module').then( m => m.ContinueShopPageModule)
   },
   {
     path: 'women',
-    loadChildren: () => import('./women/women.module').then( m => m.WomenPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./women/women.module').then( m => m.WomenPageModule)
   },
   {
     path: 'shirtdetail',
-    loadChildren: () => import('./shirtdetail/shirtdetail.module').then( m => m.ShirtdetailPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./shirtdetail/shirtdetail.module').then( m => m.ShirtdetailPageModule)
   },
   {
     path: 'verification',
@@ -154,20 +109,12 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule),
-    canActivate: [AuthGuard]
-
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
   {
     path: 'contactus',
-    loadChildren: () => import('./contactus/contactus.module').then( m => m.ContactusPageModule),
-    canActivate: [AuthGuard]
-
-  },  {
-    path: 'dealer',
-    loadChildren: () => import('./dealer/dealer.module').then( m => m.DealerPageModule)
+    loadChildren: () => import('./contactus/contactus.module').then( m => m.ContactusPageModule)
   }
-
 ];
 
 @NgModule({

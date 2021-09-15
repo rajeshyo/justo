@@ -50,12 +50,6 @@ export class SignupPage implements OnInit{
 
   }
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
-  ionViewDidLeave() {
-    this.menuCtrl.enable(true);
- } 
   getErrorMessage() {
     return this.email.hasError('required') ? 'Please enter your email' :
         this.email.hasError('email') ? 'Not a valid email' :
@@ -191,18 +185,13 @@ export class SignupPage implements OnInit{
     formdata.append('username',this.userlog.username);
     formdata.append('password',this.userlog.password);
 
-    this.loading =  this.loaderPresent();
-
+  
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
-      this.loadingCtrl.dismiss();
-
       this.data = response;
       localStorage.setItem('logindata', JSON.stringify(this.data.result.login.userdetails));
       localStorage.setItem('userid', this.data.result.login.userid);
-      localStorage.setItem('roleid', this.data.result.login.userdetails.roleid);
-      localStorage.setItem('rolename', this.data.result.login.userdetails.rolename);
 
       localStorage.setItem('session', this.data.result.login.session);
       // localStorage.setItem('userdata', this.data);
@@ -229,8 +218,6 @@ export class SignupPage implements OnInit{
 
    this.delarapi.signupdelar().subscribe((resp)=>{
      console.log(resp)
-   });
-   
-
+   })
   }
  }

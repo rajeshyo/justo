@@ -131,7 +131,7 @@
        <ion-col size="6" *ngFor="let productlist of topdata;let i = index"
           style="text-align: -webkit-center;margin: 0%; "  >
           <div style="height: 150px; position: relative;">
-             <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" onerror="this.src='/assets/img/placeholder.png';" >
+             <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
           </div>
           <div>
             <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
@@ -151,7 +151,7 @@
      <ion-col size="6" *ngFor="let productlist of topdata1;let i = index"
         style="text-align: -webkit-center;margin: 0%; "  >
         <div style="height: 150px; position: relative;">
-           <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" onerror="this.src='/assets/img/placeholder.png';"  >
+           <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
         </div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">Price: {{productlist.unit_price}}</div>
@@ -168,7 +168,7 @@
      <ion-col size="6" *ngFor="let productlist of deals;let i = index"
         style="text-align: -webkit-center;margin: 0%; "  >
         <div style="height: 150px; position: relative;">
-           <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" onerror="this.src='/assets/img/placeholder.png';" >
+           <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
         </div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.discount_percent}}%</div>

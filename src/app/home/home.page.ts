@@ -74,8 +74,7 @@ export class HomePage {
          centeredSlides: true
  
        };
- constructor(  public navCtrl: NavController,  private http: HttpClient,public router:Router,    public loadingCtrl: LoadingController,
-  ){
+ constructor(  public navCtrl: NavController,  private http: HttpClient,public router:Router){
    this.sliderOne =
       {
         isBeginningSlide: true,
@@ -257,16 +256,7 @@ localdata(){
 return this.userdata
 }
 
-wishlist(){
-  this.navCtrl.navigateRoot('/wishlist');
-}
-async productcat() {
-
-  const loader = await this.loadingCtrl.create({
-    duration: 2000
-  });
-
-  loader.present();
+productcat() {
   let url = environment.baseurl
   // const loginData = JSON.parse(localStorage.getItem('logindata'));
   const session = localStorage.getItem('session');
@@ -278,7 +268,6 @@ async productcat() {
   this.http.post( url,formdata,{})
   .toPromise()
   .then(response => {
-    loader.dismiss();
     this.data = response;
     this.cdata =this.data.result.productCategories
     console.log("productdata",this.data.result.productCategories);

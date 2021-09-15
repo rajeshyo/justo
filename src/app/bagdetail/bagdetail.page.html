@@ -45,7 +45,7 @@
 <ion-content>
 <ion-slides class="image-slider" loop="true" pager="true" slidesPerView="2" style="height: 35%;">
     <ion-slide *ngFor="let img of images" >
-        <img src="assets/img/{{img}}" class="thumb-img" imageViewer onerror="this.src='/assets/img/placeholder.png';">
+        <img src="assets/img/{{img}}" class="thumb-img" imageViewer>
     </ion-slide>
 </ion-slides>
 
