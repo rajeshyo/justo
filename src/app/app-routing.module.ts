@@ -166,6 +166,10 @@ const routes: Routes = [
   },  {
     path: 'dealer',
     loadChildren: () => import('./dealer/dealer.module').then( m => m.DealerPageModule)
+  },
+  {
+    path: 'visit',
+    loadChildren: () => import('./visit/visit.module').then( m => m.VisitPageModule)
   }
 
 ];

@@ -21,11 +21,15 @@
     <ion-row class="ion-no-padding">
         <ion-col size="12" class="ion-no-padding">
             <ion-row>               
-                <ion-col class="ion-padding" >
+                <ion-col class="ion-padding">
                     <div class="second">
+
                         <ion-label>{{d.accountname}}</ion-label>
-                        <ion-text><img src="/assets/icon/phone.svg"> <span *ngIf="d.phone != '' && d.phone != 'undefined' ">{{d.phone}}</span> <span *ngIf="d.phone == '' && d.phone == 'undefined' ">-</span> </ion-text>
-                        <ion-text><img src="/assets/icon/mail.svg"><span *ngIf="d.email1 != '' && d.email1 != 'undefined' "> {{d.email1}}</span> <span *ngIf="d.email1 == '' && d.email1 == 'undefined' "> - </span></ion-text>
+
+                        <ion-text><img src="/assets/icon/phone.svg"> <span *ngIf="d.phone != '' && d.phone != 'undefined' "> {{d.phone}}</span> <span *ngIf="d.phone == '' || d.phone == 'undefined' "> - </span> </ion-text>
+
+                        <ion-text><img src="/assets/icon/mail.svg"><span *ngIf="d.email1 != '' && d.email1 != 'undefined' "> {{d.email1}}</span> <span *ngIf="d.email1 == '' || d.email1 == 'undefined' "> - </span></ion-text>
+
                     </div>                    
                 </ion-col>
                
