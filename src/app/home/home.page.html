@@ -16,6 +16,12 @@
                </div>          
             </ion-toolbar>
           </ion-header>               -->
+
+
+
+
+
+
 <!-- Page Swiper Tab -->
 <ion-toolbar>
 
@@ -32,7 +38,7 @@
          <ion-col size="4">
             <div style="font-size: 17px;">
 
-               <img src="../../assets/logo.jpeg" style="max-width: 70%;" onerror="this.src='/assets/img/placeholder.png';" >
+               <img src="../../assets/logo.jpeg" style="max-width: 70%;">
                <!-- <b>Justo</b>  -->
             </div>
          </ion-col>
@@ -45,13 +51,17 @@
 
          <ion-col size="2" style="text-align: end;">
             <div>
-               <mat-icon (click)="wishlist()" >bookmark_border</mat-icon>
+               <!-- <mat-icon (click)="wishlistbtn()" >heart_border</mat-icon> -->
+            <mat-icon (click)="wishlistbtn()">favorite</mat-icon>
+           
+            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.deals.length}}</p>
             </div>
          </ion-col>
 
          <ion-col size="2" style="text-align: end;">
             <div routerLink="/cart" routerDirection="root">
                <mat-icon>shopping_cart</mat-icon>
+               <p style="color: red; margin-top: -50px; margin-left: 8px;">{{this.cart.length}}</p>
             </div>
          </ion-col>
       </ion-row>
@@ -70,7 +80,10 @@
 
 
 
-<ion-content>   
+<ion-content>
+  
+
+   
    <ion-slides #slider (ionSlideWillChange)="moveButton()">
 
       <!-- Home Page -->
@@ -86,8 +99,8 @@
                   </ion-slide> -->
 
 
-                  <ion-slide *ngFor="let deal of deals">
-                     <img (click)="productdata(deal.id)" src="{{deal.imagePath}}" class="thumb-img" onerror="this.src='/assets/img/placeholder.png';" >
+                  <ion-slide style="position: relative;" *ngFor="let deal of deals">
+                     <img (click)="productdata(deal.id)" src="{{deal.imagePath}}" class="thumb-img">
                      <div class="dealtimer">{{deal.timeLeft.h}}h {{deal.timeLeft.m}}m Left</div>
                   </ion-slide>
                </ion-slides>
@@ -103,7 +116,7 @@
                      style="text-align: -webkit-center;margin: 0%;" routerLink="/gown" routerDirection="root">
                      <div>
                         <img (click)="productdata(productcat.id)" src="{{productcat.imagePath}}"
-                           style="max-height: 50px;" onerror="this.src='/assets/img/placeholder.png';" >
+                           style="max-height: 50px;">
                      </div>
                      <div (click)="productdata(productcat.id)" class=tx style="color: black;">{{productcat.label}}</div>
                   </ion-col>
@@ -123,7 +136,7 @@
 
 
                   <ion-slide *ngFor="let deal1 of deals1">
-                     <img (click)="productdata(deal1.id)" src="{{deal1.imagePath}}" class="thumb-img" onerror="this.src='/assets/img/placeholder.png';" >
+                     <img (click)="productdata(deal1.id)" src="{{deal1.imagePath}}" class="thumb-img">
                   </ion-slide>
                </ion-slides>
                <!-- <img src="assets/img/e4.png"> -->
@@ -168,7 +181,7 @@
                                     routerLink="/gown" routerDirection="root">
                                     <div>
                                        <img (click)="productdata(img.id)" src="{{img.imagePath}}"
-                                          style="max-height: 50px;" onerror="this.src='/assets/img/placeholder.png';" >
+                                          style="max-height: 50px;">
                                     </div>
                                     <div class=tx style="color: black;" (click)="productdata(img.id)">{{img.label}}
                                     </div>
@@ -220,7 +233,8 @@
                                  <ion-col class="productcat" style="text-align: -webkit-center;margin: 0%;"
                                    routerDirection="root">
                                     <div>
-                                       <img  src="{{branddata.imagePath}}"  style="max-height: 50px;" onerror="this.src='/assets/img/placeholder.png';" >
+                                       <img  src="{{branddata.imagePath}}"
+                                          style="max-height: 50px;">
                                     </div>
                                     <div class=tx style="color: black;" >
                                        <!-- {{branddata.label}} -->
@@ -287,7 +301,7 @@
                   style="text-align: -webkit-center;margin: 0%; ">
                   <div style="height: 150px; position: relative;">
                      <img (click)="productdata(productcat.id)" class="img-responsive productcatimg"
-                        src="{{productcat.imagePath}}" routerLink="/gown" onerror="this.src='/assets/img/placeholder.png';" >
+                        src="{{productcat.imagePath}}" routerLink="/gown">
                   </div>
                   <div (click)="productdata(productcat.id)" class=tx style="color: black; font-size: 12px;">
                      {{productcat.label}}</div>
@@ -312,7 +326,7 @@
                   <ion-icon  (click)="profileedit()" name="pencil" color="warning"></ion-icon>
                
                </ion-card-title>
-               <img src="{{userdata.imagename}}" style="height: 80px; border-radius: 100%;"  onerror="this.src='/assets/img/placeholder.png';" >
+               <img src="{{userdata.imagename}}" style="height: 80px; border-radius: 100%;">
              </ion-card-header>
           
             <ion-card-content style="color: black;">

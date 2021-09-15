@@ -163,7 +163,8 @@ const routes: Routes = [
     loadChildren: () => import('./contactus/contactus.module').then( m => m.ContactusPageModule),
     canActivate: [AuthGuard]
 
-  },  {
+  },
+  {
     path: 'dealer',
     loadChildren: () => import('./dealer/dealer.module').then( m => m.DealerPageModule)
   },
@@ -171,7 +172,6 @@ const routes: Routes = [
     path: 'visit',
     loadChildren: () => import('./visit/visit.module').then( m => m.VisitPageModule)
   }
-
 ];
 
 @NgModule({

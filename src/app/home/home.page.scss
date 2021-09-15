@@ -53,7 +53,7 @@
    .tx{
     letter-spacing: .3px;
     font-family: 'Open Sans', sans-serif;
-     font-size: 10px;
+     font-size: 8px;
      margin: 0px;
      line-height: 1.5;
    }
@@ -134,9 +134,11 @@
 }
 
 .dealtimer{
-  // background-color: #a7aeed;
-    border-radius: 20%;
-    height: 50px;
+  background-color: #6e6e72a3;
+    border-radius: 25px;
+    // height: 50px;
+    position:absolute;
     font-size: 14px;
-    color: #0f0f0f;
+    color: #fff;
+    padding: 10px 15px ;
 }

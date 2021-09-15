@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,8 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,MatIconModule,
     FormsModule,MatCardModule,
     IonicModule,MatButtonModule,
-    ProfilePageRoutingModule,
-    ReactiveFormsModule
+    ProfilePageRoutingModule
   ],
   declarations: [ProfilePage]
 })

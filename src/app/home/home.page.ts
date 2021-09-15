@@ -23,7 +23,10 @@ export class HomePage {
   filtdt=[]
   data: any;
   userdata:any;
-  
+  cart=[]
+  topdata1=[]
+
+
    images = ['1.png','1.png','1.png'];
    image = ['11c.png','10.png','11f.png'];
    image1 = ['11b.png','11d.png','11a.png'];
@@ -71,8 +74,7 @@ export class HomePage {
          centeredSlides: true
  
        };
- constructor(  public navCtrl: NavController,  private http: HttpClient,public router:Router,    public loadingCtrl: LoadingController,
-  ){
+ constructor(  public navCtrl: NavController,  private http: HttpClient,public router:Router){
    this.sliderOne =
       {
         isBeginningSlide: true,
@@ -149,6 +151,8 @@ ngOnInit() {
   this.dealsoftheday1();
   this.productbrand();
   this.localdata();
+  this.addtocart();
+  this.getwishlist()
 // this.myTimer()
 }
 
@@ -181,6 +185,64 @@ ngOnInit() {
 // }, 1000);
 
 
+
+
+wishlistbtn(){
+  this.navCtrl.navigateRoot('/wishlist');
+}
+getwishlist() {
+  let url = environment.baseurl
+  const session = localStorage.getItem('session');
+  const orderdetails = localStorage.getItem('orderdetails');
+
+  var formdata = new FormData();
+  formdata.append('_operation','getWishListProducts');
+  formdata.append('_session',session);
+
+  this.http.post( url,formdata,{})
+  .toPromise()
+  .then(response => {
+    this.data = response;
+    this.deals =this.data.result.products
+    console.log("getwishlist",this.data.result.products);
+    return this.deals;
+
+  })
+  .catch(console.log);
+
+
+}
+addtocart() {
+  let url = environment.baseurl
+  const session = localStorage.getItem('session');
+  const userid = localStorage.getItem('userid');
+  // const foo = this.Integer.parseInt(userid);
+  // let y = +userid; 
+  const orderdetails = localStorage.getItem('orderdetails');
+
+  var formdata = new FormData();
+  formdata.append('_operation','getCartProducts');
+  formdata.append('_session',session);
+  // formdata.append('productId',id);
+  formdata.append('userId',userid);
+  // formdata.append('qty',"1");
+
+
+  this.http.post( url,formdata,{})
+  .toPromise()
+  .then(response => {
+    this.data = response;
+    this.cart =this.data.result.products
+    console.log("count",this.cart.length)
+    console.log("cartdataaa",this.data.result.products);
+    // this.navCtrl.navigateRoot('/cart');
+    return this.cart;
+
+  })
+  .catch(console.log);
+
+
+}
 search(){
   this.navCtrl.navigateRoot('/search');
 }
@@ -194,16 +256,7 @@ localdata(){
 return this.userdata
 }
 
-wishlist(){
-  this.navCtrl.navigateRoot('/wishlist');
-}
-async productcat() {
-
-  const loader = await this.loadingCtrl.create({
-    duration: 2000
-  });
-
-  loader.present();
+productcat() {
   let url = environment.baseurl
   // const loginData = JSON.parse(localStorage.getItem('logindata'));
   const session = localStorage.getItem('session');
@@ -215,7 +268,6 @@ async productcat() {
   this.http.post( url,formdata,{})
   .toPromise()
   .then(response => {
-    loader.dismiss();
     this.data = response;
     this.cdata =this.data.result.productCategories
     console.log("productdata",this.data.result.productCategories);

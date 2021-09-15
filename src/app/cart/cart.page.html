@@ -18,15 +18,21 @@
              </ion-col>
 
              <ion-col size="1.8">
-                <div > <mat-icon>search</mat-icon></div>
+                <div > <mat-icon (click)="search()">search</mat-icon></div>
              </ion-col>
 
              <ion-col size="1.8">
-                <div><mat-icon (click)="wishlistbtn()" >bookmark_border</mat-icon></div>
+                <div>
+                  <mat-icon (click)="wishlistbtn()">favorite</mat-icon>
+            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.deals.length}}</p>
+
+                  </div>
              </ion-col>
 
              <ion-col size="1.5">
-                <div> <mat-icon>shopping_cart </mat-icon><p style="color: red; margin-top: -50px; margin-left: 8px;">{{this.cart.length}}</p></div>
+                <div> <mat-icon>shopping_cart </mat-icon>
+                  <p style="color: red; margin-top: -50px; margin-left: 8px;">{{this.cart.length}}</p>
+               </div>
              </ion-col>
           </ion-row>
        </ion-grid> 
@@ -63,16 +69,16 @@
  <ion-card *ngFor="let productlist of cart;let i = index">
       <div class="main" style="background-color: cadetblue;">
          <div class="pic">
-            <img src={{productlist.imagePath}}  style="height: 90px; width: 50%;" onerror="this.src='/assets/img/placeholder.png';" >
+            <img src={{productlist.imagePath}}  style="height: 90px; width: 50%;" >
            
             <!-- <img   src="{{final.imagePath}}"/> -->
          </div>
 
          <div class="content" style="color: #fff;" >
           
-            <button (click)="qtyde(i)">-</button>
-          <input type="number" style="width: 60px; color: black;" [value]="productlist.quantity" [(ngModel)]="productlist.quantity">
-          <button (click)="qtyin(i)">+</button>
+            <button (click)="qtyde(productlist.id)">-</button>
+          <input type="number" style="width: 60px;" [(ngModel)]="user.cartqty">
+          <button (click)="qtyin(productlist.id)">+</button>
             <br>
             Qty {{this.deals1}}
             <br>
@@ -194,9 +200,9 @@
  <mat-card>
     <div class="cat-women">
         <div class="women-bag">
-               <span style="color: black;"> <strong>Sub Total MRP</strong></span>
+               <span style="color: black;"> <strong>Total MRP</strong></span>
             <div class="content1"  style="text-align: right; width: 50%;color: black;">
-               <i class="fa fa-inr"><strong>{{subtotal}}</strong></i> 
+               <i class="fa fa-inr"><strong>1199</strong></i> 
             </div>
         </div> 
  
@@ -220,7 +226,7 @@
           <div class="total">
                <b>Total</b>
              <div class="content1"  >
-                <i class="fa fa-inr"><b>{{total}}</b></i>
+                <i class="fa fa-inr"><b>1199</b></i>
              </div>
          </div>
       </mat-card>
@@ -228,14 +234,14 @@
 </ion-content>
 
 <ion-toolbar>
-   <ion-buttons slot="start">
+   <!-- <ion-buttons slot="start">
      <ion-back-button defaultHref="/women"></ion-back-button>
-  </ion-buttons>
+  </ion-buttons> -->
       <div class="container" style="margin-bottom: .3em;">
          <div class="pull-right"  >
            <ion-button color="dark"
         
-            (click)="placeorder()" routerDirection="root" style="width: 80%; font-size: 12px; height: 2.5em;">Place Order</ion-button> 
+            (click)="placeorder()" routerDirection="root" style="margin-left: 37px;width: 80%; font-size: 12px; height: 2.5em;">Place Order</ion-button> 
          </div>
      </div>
 </ion-toolbar>
