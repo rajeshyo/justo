@@ -280,7 +280,6 @@ fdata: any;
     })
     .catch(console.log);
 
-
   } 
 
   removeaddtocart(id) {
@@ -310,68 +309,63 @@ fdata: any;
     })
     .catch(console.log);
 
-
   } 
 
 
-  qtyin(id){
+  qtyin(index: number){
+
     let url = environment.baseurl
     const session = localStorage.getItem('session');
     const userid = localStorage.getItem('userid');
     const orderdetails = localStorage.getItem('orderdetails');
+    this.cart[index].quantity = parseInt(this.cart[index].quantity) + 1;
 
     var formdata = new FormData();
-    formdata.append('_operation','addToCart');
+    formdata.append('_operation','updateCartProductQuantity');
     formdata.append('_session',session);
-    formdata.append('productId',id);
+    formdata.append('productId',this.cart[index].id);
     formdata.append('userId',userid);
-    formdata.append('action',"increase");
-    formdata.append('qty',this.user.cartqty);
- 
-
-
+   // formdata.append('action',"increase");
+    formdata.append('qty',this.cart[index].quantity);
 
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("quantity",this.data.result.quantity);
       // this.navCtrl.navigateRoot('/cart');
-      this.addtocart()
-      return this.deals1;
+      this.addtocart();
+     // return this.topdata1;
 
     })
     .catch(console.log);
   }
 
-
-  qtyde(id){
+  qtyde(index: number){
     let url = environment.baseurl
     const session = localStorage.getItem('session');
     const userid = localStorage.getItem('userid');
     const orderdetails = localStorage.getItem('orderdetails');
+    this.cart[index].quantity -= 1;
 
     var formdata = new FormData();
-    formdata.append('_operation','addToCart');
+    formdata.append('_operation','updateCartProductQuantity');
     formdata.append('_session',session);
-    formdata.append('productId',id);
+    formdata.append('productId',this.cart[index].id);
     formdata.append('userId',userid);
-    formdata.append('action',"decrease");
-    formdata.append('qty',this.user.cartqty);
- 
+    //formdata.append('action',"decrease");
+    formdata.append('qty',this.cart[index].quantity);
 
-
+    
 
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("cartdataaa",this.data.result.products);
       // this.navCtrl.navigateRoot('/cart');
       this.addtocart()
-      return this.topdata1;
+     // return this.topdata1;
 
     })
     .catch(console.log);

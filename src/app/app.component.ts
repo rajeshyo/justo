@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { Router, Event, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 export class AppComponent implements OnInit {
 
   userdata:any
+  userlogin = 0;
+  roleId:any;
 
   public selectedIndex = 0;
   public appPages = [
@@ -67,15 +70,36 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public navCtrl: NavController,
+    private router: Router,
 
   ) {
     this.initializeApp();
+
+    router.events.subscribe((event: Event) => {
+
+      if (event instanceof NavigationStart) {
+      /*  if(this.VersionNumber != this.Versionlive){
+          this.alertUpdate();
+        }*/
+        // Show loading indicator
+     //  console.log('NavigationStart', event);
+    //   var myobj = document.getElementsByClassName("tooltip");
+    this.localdata();
+      // myobj.remove();
+        //console.log(myobj);
+      }
+      if (event instanceof NavigationEnd) {
+        // Hide loading indicator
+      //  console.log('NavigationEnd', event);
+      }
+    });
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.statusBar.styleDefault();
     });
   }
 
@@ -91,12 +115,18 @@ export class AppComponent implements OnInit {
 
   localdata(){
     const loginData = JSON.parse(localStorage.getItem('logindata'));
-    this.userdata=loginData
+    this.userdata=loginData;
+    if(this.userdata !=null){
+      this.userlogin = 1;
+      this.roleId = localStorage.getItem('roleid');
+
+    }
   return this.userdata
   }
   
   logout() {
     localStorage.clear();
+    this.userlogin = 0;
     this.navCtrl.navigateRoot('/signup');
   };
 }
