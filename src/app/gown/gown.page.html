@@ -36,7 +36,7 @@
         </ion-col>
 
         <ion-col size="4">
-          <div style="font-size: 18px;"><b>Product List</b> </div>
+          <div style="font-size: 18px;"><b>Products</b> </div>
         </ion-col>
 
         <ion-col size="1.5" style="text-align: end;">
@@ -46,7 +46,7 @@
         <ion-col size="1.5" style="text-align: end;">
           <div routerLink="/wishlist" routerDirection="root">
             <mat-icon (click)="wishlistbtn()">favorite</mat-icon>
-            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.deals.length}}</p>
+            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.wishlist.length}}</p>
 
           </div>
         </ion-col>
@@ -73,7 +73,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content (ionScroll)="onScroll($event)">
 
   <!-- <mat-card> -->
 
@@ -131,7 +131,7 @@
        <ion-col size="6" *ngFor="let productlist of topdata;let i = index"
           style="text-align: -webkit-center;margin: 0%; "  >
           <div style="height: 150px; position: relative;">
-             <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+             <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}"  onerror="this.src='/assets/img/placeholder.png';">
           </div>
           <div>
             <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
@@ -145,13 +145,15 @@
        </ion-col>
     </ion-row>
  </ion-grid>
+
+ 
 <!-- Subcat product list-->
  <ion-grid>
   <ion-row>
      <ion-col size="6" *ngFor="let productlist of topdata1;let i = index"
         style="text-align: -webkit-center;margin: 0%; "  >
         <div style="height: 150px; position: relative;">
-           <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+           <img (click)="productdetails(productlist.id)" class="img-responsive productcatimg" src="{{productlist.imagePath}}"  onerror="this.src='/assets/img/placeholder.png';" >
         </div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">Price: {{productlist.unit_price}}</div>
@@ -168,7 +170,7 @@
      <ion-col size="6" *ngFor="let productlist of deals;let i = index"
         style="text-align: -webkit-center;margin: 0%; "  >
         <div style="height: 150px; position: relative;">
-           <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}" routerLink="/gown" >
+           <img (click)="productdetails(productlist.id)"class="img-responsive productcatimg" src="{{productlist.imagePath}}"  onerror="this.src='/assets/img/placeholder.png';">
         </div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.label}}</div>
         <div (click)="productdetails(productlist.id)" class=tx style="color: black; font-size: 12px;">{{productlist.discount_percent}}%</div>
@@ -199,10 +201,13 @@
      </ion-col>
   </ion-row>
 </ion-grid> -->
-
+<ion-infinite-scroll threshold="100px" (ionInfinite)="getproductlist($event)" *ngIf="disable==0">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>
 
 
-<ion-buttons slot="start">
+<!-- <ion-buttons slot="start">
   <ion-back-button defaultHref="/home"></ion-back-button>
-</ion-buttons>
+</ion-buttons> -->

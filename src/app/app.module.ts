@@ -12,6 +12,8 @@ import {HomeService} from '../app/services/home.service'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VerificationPipe } from './verification.pipe';
+import { AuthGuard } from './guard/auth.guard';
+import { AuthService } from './auth.service'; // Here is the import line
 
 // geolocation and native-geocoder
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -34,6 +36,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
     AuthGuard,
     Geolocation,
     NativeGeocoder,
+    AuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

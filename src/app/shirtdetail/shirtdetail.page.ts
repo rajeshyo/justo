@@ -33,7 +33,7 @@ export class ShirtdetailPage implements OnInit {
   items = [];
   images = ['shirt1.png','shirt1.png','shirt1.png'];
   show = false;
-
+  details=[]
   cdata= []
   topdata= []
   topdata1=[]
@@ -101,7 +101,7 @@ export class ShirtdetailPage implements OnInit {
     .toPromise()
     .then(response => {
       this.data = response;
-      this.deals =this.data.result.productsDetails
+      this.details =this.data.result.productsDetails
       console.log("detailsproductdata",this.data.result.productsDetails);
       return this.topdata1;
     })

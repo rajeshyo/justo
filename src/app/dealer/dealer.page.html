@@ -11,9 +11,23 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-searchbar [(ngModel)]="value" 
-(ionChange)="applyFilters($event)" (ionClear) ="resetFilters()" (ionCancel) ="resetFilters()"></ion-searchbar>
 
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button (click)="dismiss()" layout="ion-only">
+      &nbsp;
+    </ion-button>
+  </ion-buttons>
+  <ion-searchbar mode="ios" [(ngModel)]="value" style="padding: 16px 0px;" (ionChange)="resetFilters_clear($event)"  (ionClear) ="resetFilters()" (ionCancel) ="resetFilters()"></ion-searchbar> 
+  <ion-buttons slot="end">
+    &nbsp; <ion-button (click)="applyFilters()" class="ion-text-capitalize"  color="dark" fill="outline" shape="round"> 
+      Go
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<!-- <ion-searchbar [(ngModel)]="value" 
+(ionChange)="applyFilters($event)" (ionClear) ="resetFilters()" (ionCancel) ="resetFilters()" animated></ion-searchbar>
+ -->
 <ion-content (ionScroll)="onScroll($event)">
 
   <h3 class="ion-text-center" *ngIf="dealers.length == 0 ">{{Error_message}}</h3>

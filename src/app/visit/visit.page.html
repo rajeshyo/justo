@@ -1,11 +1,89 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>visit</ion-title>
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-family: 'Open Sans', sans-serif; font-size: 17px;">Visits</ion-title>
+
   </ion-toolbar>
 </ion-header>
+<ion-content class="visit">
+  
+  <form novalidate (ngSubmit)="saveData()" [formGroup]="visitform" class="formStyle">
 
-<ion-content>
-  <div class="ion-padding">
+     
+    <mat-card>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+  
+            <ion-list>
+              <!-- <ion-list-header color="light">
+                <ion-label class="fw700">Form</ion-label>
+              </ion-list-header> -->
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Dealer Name:</ion-label>
+  
+              <ion-input type="text" class="form-control even" [(ngModel)]="visitdata.dealername"
+              formControlName="dealername" name="dealername"
+              [class.error1]="!visitform.controls.dealername.valid && visitform.controls.dealername.dirty"></ion-input>
+  
+              <ul class="error ion-padding-start text-danger" no-lines
+                  *ngIf="( visitform.get('dealername').hasError('required') || visitform.get('dealername').hasError('maxlength') ) && visitform.get('dealername').touched">
+  
+                  <li *ngIf="visitform.get('dealername').hasError('required') && visitform.get('dealername').touched">
+                    Dealer Name is required!
+                  </li>
+                  <li *ngIf="visitform.get('dealername').hasError('maxlength') && visitform.get('dealername').touched">
+                    Dealer Name can't Be More Than 200 Character
+                  </li>
+  
+              </ul>  
+            </ion-item>
+  
+          
+  
+  
+              <ion-item>
+                <ion-label color="dark" position="stacked">Purpose of visit:</ion-label>
+  
+              <ion-textarea type="text" class="form-control even" [(ngModel)]="visitdata.purpose"
+              formControlName="purpose" name="purpose" cols="5"
+              [class.error1]="!visitform.controls.purpose.valid && visitform.controls.purpose.dirty"></ion-textarea>
+              <ul class="error ion-padding-start text-danger" no-lines
+                  *ngIf="( visitform.get('purpose').hasError('required')  ) && visitform.get('purpose').touched">
+  
+                  <li *ngIf="visitform.get('purpose').hasError('required') && visitform.get('purpose').touched">
+                      Purpose is required!
+                  </li>
+              </ul>
+            </ion-item>
+  
+  
+            
+            </ion-list>
+  
+         
+    
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+    </mat-card>
+
+        <mat-card>
+          <ion-button type="submit" color="dark" size="small" expand="block" [disabled]="visitform.invalid">Save Details</ion-button>
+        </mat-card>
+    
+  
+   </form>
+
+
+
+   
+
+ <!--  <div class="ion-padding">
 
   <ion-button (click)="getCurrentCoordinates()" expand="block">
     Get Location
@@ -28,5 +106,5 @@
     <ion-badge color="danger" slot="end">{{longitude}}</ion-badge>
   </ion-item>
   </ion-list>    
-</div>
+</div> -->
 </ion-content>

@@ -8,10 +8,12 @@
 </ion-header>
 
 <ion-content class="profile">
+  <form novalidate (ngSubmit)="saveData()" [formGroup]="userform" class="formStyle">
+
   <ion-card no-margin>
     <ion-card-content class="bg-profile">
-      <img src="assets/img/avi.png">
-      <h1 class="fw500">Jack Joe</h1>
+      <img src="{{userInfo.imagename}}" onerror="this.src='/assets/img/placeholder.png';">
+      <h1 class="fw500">{{userInfo.first_name}} {{userInfo.last_name}}</h1>
       <!-- <h2 color="light" margin-bottom>Customer</h2> -->
       <ion-button icon-left color="secondary" style=" height: 2em; font-size: 12px; ">
         <ion-icon name="camera-outline" zoom="1"></ion-icon> 
@@ -27,13 +29,72 @@
             <!-- <ion-list-header color="light">
               <ion-label class="fw700">Form</ion-label>
             </ion-list-header> -->
+              <ion-item>
+                <ion-label color="dark" position="stacked">First Name:</ion-label>
+
+            <ion-input type="text" placeholder="First Name" class="form-control even" [(ngModel)]="userInfo.first_name"
+            formControlName="firstname" name="firstname"
+            [class.error1]="!userform.controls.firstname.valid && userform.controls.firstname.dirty"></ion-input>
+
+            <ul class="error ion-padding-start text-danger" no-lines
+                *ngIf="( userform.get('firstname').hasError('required') || userform.get('firstname').hasError('maxlength') ) && userform.get('firstname').touched">
+
+                <li *ngIf="userform.get('firstname').hasError('minlength') && userform.get('firstname').touched">
+                  First Name is required!
+                </li>
+                <li *ngIf="userform.get('firstname').hasError('maxlength') && userform.get('firstname').touched">
+                  First Name can't Be More Than 150 Character
+                </li>
+
+            </ul>  
+          </ion-item>
+
+          <ion-item>
+          <ion-label color="dark" position="stacked">Last Name:</ion-label>
+
+            <ion-input type="text" placeholder="Last Name" class="form-control even" [(ngModel)]="userInfo.last_name"
+            formControlName="lastname" name="lastname"
+            [class.error1]="!userform.controls.lastname.valid && userform.controls.lastname.dirty"></ion-input>
+
+            <ul class="error ion-padding-start text-danger" no-lines
+                *ngIf="( userform.get('lastname').hasError('required') || userform.get('lastname').hasError('maxlength') ) && userform.get('lastname').touched">
+
+                <li *ngIf="userform.get('lastname').hasError('minlength') && userform.get('lastname').touched">
+                    Last Name is required!
+                </li>
+                <li *ngIf="userform.get('lastname').hasError('maxlength') && userform.get('lastname').touched">
+                  Last Name can't Be More Than 150 Character
+                </li>
+
+            </ul>  
+          </ion-item>
+
 
             <ion-item>
-              <ion-label color="dark" position="stacked">Full Name:</ion-label>
+              <ion-label color="dark" position="stacked">Address:</ion-label>
+
+            <ion-input type="text" placeholder="Address" class="form-control even" [(ngModel)]="userInfo.address_street"
+            formControlName="address" name="address"
+            [class.error1]="!userform.controls.address.valid && userform.controls.address.dirty"></ion-input>
+            <ul class="error ion-padding-start text-danger" no-lines
+                *ngIf="( userform.get('address').hasError('required')  ) && userform.get('address').touched">
+
+                <li *ngIf="userform.get('address').hasError('minlength') && userform.get('address').touched">
+                    Address is required!
+                </li>
+            </ul>
+          </ion-item>
+
+
+           <!--  <ion-item>
+              <ion-label color="dark" position="stacked">First Name:</ion-label>
               <ion-input inputmode="text" placeholder="Ex..: Jack Joe" value=""></ion-input>
             </ion-item>
 
-          
+            <ion-item>
+              <ion-label color="dark" position="stacked">Last Name:</ion-label>
+              <ion-input inputmode="text" placeholder="Ex..: Jack Joe" value=""></ion-input>
+            </ion-item>
 
               <ion-item>
                   <ion-label color="dark" position="stacked">Mobile Number:</ion-label>
@@ -45,63 +106,27 @@
               <ion-input inputmode="email" placeholder="Ex.: avii@gmail.com" value=""></ion-input>
             </ion-item>
 
-           
-    
-            
-
 
             <ion-item>
                 <ion-label color="dark" position="stacked">City:</ion-label>
                 <ion-input inputmode="text" placeholder="Ex.: Greator Noida"></ion-input>
               </ion-item>
-  
 
-    
-           
-    
             <ion-item>
               <ion-label color="dark" style="font-size: 14px;">State</ion-label>
               <ion-select>
                 <ion-select-option value="nes">UP</ion-select-option>
                 <ion-select-option value="n64">MP</ion-select-option>
-                <ion-select-option value="ps">Rajsthan</ion-select-option>
+                <ion-select-option value="ps">Rajasthan</ion-select-option>
                 <ion-select-option value="genesis">AP</ion-select-option>
                 <ion-select-option value="saturn">SP</ion-select-option>
                 <ion-select-option value="snes">Kantō</ion-select-option>
                 <ion-select-option value="snes">Delhi</ion-select-option>
               </ion-select>
-            </ion-item>
+            </ion-item> -->
           </ion-list>
 
-          <ion-list >
-              <ion-radio-group >
-                <ion-list-header color="light">
-                  <ion-label class="fw700">Gender</ion-label>
-                </ion-list-header>
-            
-                <ion-item style="font-size: 13px;font-family: 'Open Sans', sans-serif;">
-                  <ion-label color="">Male</ion-label>
-                  <ion-radio slot="start" value="Male" checked></ion-radio>
-                </ion-item>
-            
-                <ion-item style="font-size: 13px;font-family: 'Open Sans', sans-serif;">
-                  <ion-label color="" >Female</ion-label>
-                  <ion-radio slot="start" value="Female"></ion-radio>
-                </ion-item>
-
-                <p text-center tappable (click)="forgotPass()" class="paz" style="font-family: 'Open Sans', sans-serif;">
-                    <ion-text color="dark">
-                    <br> <strong>Change Password?</strong>
-                    </ion-text>
-                 </p>
-
-
-
-
-              </ion-radio-group>
-  
-              
-            </ion-list> 
+       
   
         </ion-col>
       </ion-row>
@@ -109,11 +134,11 @@
   
   </ion-card>
       <mat-card>
-        <ion-button size="small"  color="dark" (click)="sendData()"  expand="block" no-margin>Save Details</ion-button>
+        <ion-button type="submit" color="dark" size="small" expand="block" [disabled]="userform.invalid">Save Details</ion-button>
       </mat-card>
   
 
- 
+ </form>
 
 
 </ion-content>

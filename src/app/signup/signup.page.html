@@ -26,6 +26,9 @@
     <ion-slide>
       <div class="sign-container">
         <form class="sign-form">
+          <mat-error>
+            {{error}}
+          </mat-error>
           <mat-form-field style="width: 100%; color:black;">
             <input matInput placeholder="Enter your Username" [(ngModel)]=" userlog.username" [formControl]="passFormControl"type="text"  
               required>
@@ -411,7 +414,7 @@
   </ion-slides>
 </ion-content>
 
-<div class="content">
+<!-- <div class="content">
   <br> ---OR JOIN WITH---
 </div>
 
@@ -419,4 +422,4 @@
   <div> <img src="https://img.icons8.com/color/30/000000/facebook-circled.png"></div>
   <div> <img src="https://img.icons8.com/color/30/000000/google-plus.png"></div>
 
-</div>
+</div> -->

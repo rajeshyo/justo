@@ -54,7 +54,7 @@
                <!-- <mat-icon (click)="wishlistbtn()" >heart_border</mat-icon> -->
             <mat-icon (click)="wishlistbtn()">favorite</mat-icon>
            
-            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.deals.length}}</p>
+            <p style="color: red; margin-top: -50px; margin-left: 8px;">  {{this.deals2.length}}</p>
             </div>
          </ion-col>
 
@@ -100,7 +100,7 @@
 
 
                   <ion-slide style="position: relative;" *ngFor="let deal of deals">
-                     <img (click)="productdata(deal.id)" src="{{deal.imagePath}}" class="thumb-img">
+                     <img (click)="productdata(deal.id)" src="{{deal.imagePath}}" class="thumb-img" onerror="this.src='/assets/img/placeholder.png';">
                      <div class="dealtimer">{{deal.timeLeft.h}}h {{deal.timeLeft.m}}m Left</div>
                   </ion-slide>
                </ion-slides>
@@ -113,10 +113,10 @@
             <ion-grid style="border-bottom: none;">
                <ion-row>
                   <ion-col class="productcat" *ngFor="let productcat of cdata;let i = index"
-                     style="text-align: -webkit-center;margin: 0%;" routerLink="/gown" routerDirection="root">
+                     style="text-align: -webkit-center;margin: 0%;"  routerDirection="root">
                      <div>
                         <img (click)="productdata(productcat.id)" src="{{productcat.imagePath}}"
-                           style="max-height: 50px;">
+                           style="max-height: 50px;" onerror="this.src='/assets/img/placeholder.png';">
                      </div>
                      <div (click)="productdata(productcat.id)" class=tx style="color: black;">{{productcat.label}}</div>
                   </ion-col>
@@ -136,7 +136,7 @@
 
 
                   <ion-slide *ngFor="let deal1 of deals1">
-                     <img (click)="productdata(deal1.id)" src="{{deal1.imagePath}}" class="thumb-img">
+                     <img (click)="productdata(deal1.id)" src="{{deal1.imagePath}}" class="thumb-img" onerror="this.src='/assets/img/placeholder.png';">
                   </ion-slide>
                </ion-slides>
                <!-- <img src="assets/img/e4.png"> -->
@@ -166,7 +166,7 @@
 
 
 
-                  <div class="ccn" style="display: flex;margin-top: 1em;" routerLink="/gown" routerDirection="root">
+                  <div class="ccn" style="display: flex;margin-top: 1em;"  routerDirection="root">
                      <ion-slides class="image-slider" loop="false" pager="false" [options]="slideOptsTwo" #slideWithNav
                         (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" slidesPerView="1"
                         style=" width: 100%; ">
@@ -178,10 +178,10 @@
                            <ion-grid style="border-bottom: none;">
                               <ion-row>
                                  <ion-col class="productcat" style="text-align: -webkit-center;margin: 0%;"
-                                    routerLink="/gown" routerDirection="root">
+                                     routerDirection="root">
                                     <div>
                                        <img (click)="productdata(img.id)" src="{{img.imagePath}}"
-                                          style="max-height: 50px;">
+                                          style="max-height: 50px;" onerror="this.src='/assets/img/placeholder.png';">
                                     </div>
                                     <div class=tx style="color: black;" (click)="productdata(img.id)">{{img.label}}
                                     </div>
@@ -234,7 +234,7 @@
                                    routerDirection="root">
                                     <div>
                                        <img  src="{{branddata.imagePath}}"
-                                          style="max-height: 50px;">
+                                          style="max-height: 50px;" onerror="this.src='/assets/img/placeholder.png';">
                                     </div>
                                     <div class=tx style="color: black;" >
                                        <!-- {{branddata.label}} -->
@@ -301,7 +301,7 @@
                   style="text-align: -webkit-center;margin: 0%; ">
                   <div style="height: 150px; position: relative;">
                      <img (click)="productdata(productcat.id)" class="img-responsive productcatimg"
-                        src="{{productcat.imagePath}}" routerLink="/gown">
+                        src="{{productcat.imagePath}}"  onerror="this.src='/assets/img/placeholder.png';">
                   </div>
                   <div (click)="productdata(productcat.id)" class=tx style="color: black; font-size: 12px;">
                      {{productcat.label}}</div>
@@ -326,7 +326,7 @@
                   <ion-icon  (click)="profileedit()" name="pencil" color="warning"></ion-icon>
                
                </ion-card-title>
-               <img src="{{userdata.imagename}}" style="height: 80px; border-radius: 100%;">
+               <img src="{{userdata.imagename}}" style="height: 80px; border-radius: 100%;" onerror="this.src='/assets/img/placeholder.png';">
              </ion-card-header>
           
             <ion-card-content style="color: black;">
@@ -348,13 +348,13 @@
 <div class="menuu">
    <ion-segment  [(ngModel)]="page" color="secondary">
       <ion-segment-button value="0" (click)="selectedTab(0)" color="danger;">
-         <ion-icon name="home"></ion-icon>
+         <ion-icon name="home" style="color: #ffffff;"></ion-icon>
       </ion-segment-button>
       <ion-segment-button value="1" (click)="selectedTab(1)">
-         <ion-icon name="apps"></ion-icon>
+         <ion-icon name="apps" style="color: #ffffff;"></ion-icon>
       </ion-segment-button>
       <ion-segment-button value="2" (click)="selectedTab(2)">
-         <ion-icon name="person"></ion-icon>
+         <ion-icon name="person" style="color: #ffffff;"></ion-icon>
       </ion-segment-button>
    </ion-segment>
 

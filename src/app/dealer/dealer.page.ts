@@ -53,11 +53,16 @@ export class DealerPage implements OnInit {
     
   }
   async getDealers(event?){
+
+    if (this.page == 1) {
+      this.dealers = [];
+    }
     const loader = await this.loadingCtrl.create({
       duration: 2000
     });
-  
+   if(this.applyFilter == false){
     loader.present();
+  }
     let url = environment.baseurl
     // const loginData = JSON.parse(localStorage.getItem('logindata'));
     const session = localStorage.getItem('session');
@@ -83,17 +88,18 @@ export class DealerPage implements OnInit {
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
-
+      if(this.applyFilter == false){
       loader.dismiss();
+      }
       this.data = response;
      // this.dealers = this.data.result.records;
-
-      if (this.data.result.records <= 0) {
+     console.log('de',this.data.result.records);
+      if( this.data.result.records == null || this.data.result.records == 'null' || this.data.result.records == '') {
 
         this.Error_message = 'No any data found.';
         this.totalrecords=0;
 
-      }else {
+      }else { 
           let pdata = this.data.result.records;
 
           if (this.page == 1) {
@@ -144,14 +150,27 @@ export class DealerPage implements OnInit {
     this.getDealers();
   }
 
-  applyFilters(ev: any) {
-
+  resetFilters_clear(ev: any) {
+   
     let val = ev.target.value;
+    if (val.length <= 0) {
+
+
+      //this.infiniteScroll.disabled = false;
+   //   console.log(this.infiniteScroll.disabled);
+      this.resetFilters(); 
+       }
+   
+  }
+
+  applyFilters() {
+    this.applyFilter = true;
+    this.page = 1;
+    this.scrollToTop();
+    this.disable = 0;
+    let val = this.value;
     if (val && val.length >= 2 && val.trim() !== '') {
-      this.applyFilter = true;
-      this.page = 1;
-      this.scrollToTop();
-      this.disable = 0;
+
 
       //this.infiniteScroll.disabled = false;
    //   console.log(this.infiniteScroll.disabled);

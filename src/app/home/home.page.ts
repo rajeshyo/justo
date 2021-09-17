@@ -20,6 +20,7 @@ export class HomePage {
   topdata= []
   deals=[]
   deals1=[]
+  deals2=[]
   filtdt=[]
   data: any;
   userdata:any;
@@ -74,7 +75,8 @@ export class HomePage {
          centeredSlides: true
  
        };
- constructor(  public navCtrl: NavController,  private http: HttpClient,public router:Router){
+ constructor(  public navCtrl: NavController,  private http: HttpClient,public router:Router,    public loadingCtrl: LoadingController,
+  ){
    this.sliderOne =
       {
         isBeginningSlide: true,
@@ -203,9 +205,9 @@ getwishlist() {
   .toPromise()
   .then(response => {
     this.data = response;
-    this.deals =this.data.result.products
+    this.deals2 =this.data.result.products
     console.log("getwishlist",this.data.result.products);
-    return this.deals;
+    return this.deals2;
 
   })
   .catch(console.log);
@@ -256,8 +258,13 @@ localdata(){
 return this.userdata
 }
 
-productcat() {
-  let url = environment.baseurl
+async productcat() {
+  const loader =  await this.loadingCtrl.create({
+    duration: 2000
+  });
+
+  loader.present();
+  let url = environment.baseurl;
   // const loginData = JSON.parse(localStorage.getItem('logindata'));
   const session = localStorage.getItem('session');
   // console.log("userdata",this.userlog)
@@ -268,6 +275,8 @@ productcat() {
   this.http.post( url,formdata,{})
   .toPromise()
   .then(response => {
+    loader.dismiss();
+
     this.data = response;
     this.cdata =this.data.result.productCategories
     console.log("productdata",this.data.result.productCategories);

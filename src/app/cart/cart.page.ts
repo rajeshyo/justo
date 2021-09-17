@@ -5,6 +5,7 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -23,6 +24,7 @@ export class CartPage {
   sliderThree: any;
  
   deals=[]
+
   user:any ={}
   finaldt:any;
   datareceive:String="";
@@ -34,7 +36,9 @@ fdata: any;
   topdata=[]
   cart=[]
   addtocart1=[]
-  Integer:any
+  Integer:any;
+  total: any;
+  subtotal: any;
   //Configuration for each Slider
   slideOptsOne = {
     initialSlide: 0,
@@ -55,6 +59,7 @@ fdata: any;
   constructor(public navCtrl: NavController,
     public menuCtrl: MenuController,
     public toastCtrl: ToastController,
+    public router:Router,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public activatedRouter:ActivatedRoute,
@@ -169,10 +174,6 @@ fdata: any;
     this.getwishlist();
 
   }
-
-
-
-
   getwishlist() {
     let url = environment.baseurl
     const session = localStorage.getItem('session');
@@ -197,6 +198,10 @@ fdata: any;
   }
   search(){
     this.navCtrl.navigateRoot('/search');
+  }
+  productdetails(id){
+    this.router.navigate(['shirtdetail'],{queryParams:{id:id}})
+    console.log("router id",id)
   }
   orderdateails() {
     let url = environment.baseurl
@@ -274,12 +279,12 @@ fdata: any;
       this.cart =this.data.result.products
       console.log("count",this.cart.length)
       console.log("cartdataaa",this.data.result.products);
+      this.totalPrice();
       // this.navCtrl.navigateRoot('/cart');
       return this.cart;
 
     })
     .catch(console.log);
-
 
   } 
 
@@ -305,78 +310,103 @@ fdata: any;
       console.log("cartdataaa",this.data.result.products);
       // this.navCtrl.navigateRoot('/cart');
       this.addtocart()
-      return this.topdata1;
-
     })
     .catch(console.log);
-
 
   } 
 
 
-  qtyin(id){
+  async qtyin(index: number){
+    const loader = await this.loadingCtrl.create({
+      duration: 2000
+    });
+  
+    loader.present();
     let url = environment.baseurl
     const session = localStorage.getItem('session');
     const userid = localStorage.getItem('userid');
     const orderdetails = localStorage.getItem('orderdetails');
-
+    this.cart[index].quantity = parseInt(this.cart[index].quantity) + 1;
+   
     var formdata = new FormData();
-    formdata.append('_operation','addToCart');
+    formdata.append('_operation','updateCartProductQuantity');
     formdata.append('_session',session);
-    formdata.append('productId',id);
+    formdata.append('productId',this.cart[index].id);
     formdata.append('userId',userid);
-    formdata.append('action',"increase");
-    formdata.append('qty',this.user.cartqty);
- 
-
-
+   // formdata.append('action',"increase");
+    formdata.append('qty',this.cart[index].quantity);
 
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("quantity",this.data.result.quantity);
       // this.navCtrl.navigateRoot('/cart');
-      this.addtocart()
-      return this.deals1;
+      this.addtocart();
+      loader.dismiss();
+     // return this.topdata1;
 
     })
     .catch(console.log);
   }
 
-
-  qtyde(id){
+  async qtyde(index: number){
+    const loader = await this.loadingCtrl.create({
+      duration: 2000
+    });
+  
+    loader.present();
     let url = environment.baseurl
     const session = localStorage.getItem('session');
     const userid = localStorage.getItem('userid');
     const orderdetails = localStorage.getItem('orderdetails');
+    if(this.cart[index].quantity > 1) {
+    this.cart[index].quantity -= 1;
 
     var formdata = new FormData();
-    formdata.append('_operation','addToCart');
+    formdata.append('_operation','updateCartProductQuantity');
     formdata.append('_session',session);
-    formdata.append('productId',id);
+    formdata.append('productId',this.cart[index].id);
     formdata.append('userId',userid);
-    formdata.append('action',"decrease");
-    formdata.append('qty',this.user.cartqty);
- 
+    //formdata.append('action',"decrease");
+    formdata.append('qty',this.cart[index].quantity);
 
-
+    
 
     this.http.post( url,formdata,{})
     .toPromise()
     .then(response => {
       this.data = response;
       this.deals1 =this.data.result.products
-      console.log("cartdataaa",this.data.result.products);
       // this.navCtrl.navigateRoot('/cart');
       this.addtocart()
-      return this.topdata1;
+      loader.dismiss();
+
+     // return this.topdata1;
 
     })
     .catch(console.log);
+  }else{
+    this.removeaddtocart(this.cart[index].id);
+    loader.dismiss();
+
+  }
   }
 
+
+  totalPrice() {
+    var price = 0;
+    var subPrice = 0;
+    for (let value of this.cart) {
+      let sub = value.unit_price * value.quantity;
+      subPrice = subPrice + sub;
+      price = price + sub;
+     
+    }
+    this.subtotal = subPrice;
+    this.total = price;
+
+  }
 
 
   placeorder(){

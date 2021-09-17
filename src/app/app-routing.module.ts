@@ -5,9 +5,12 @@ import { AuthGuard } from "./guard/auth.guard";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'signup',
-    pathMatch: 'full'
+    redirectTo: 'home',
+    pathMatch: 'full',
+    
+    
   },
+
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
@@ -166,11 +169,15 @@ const routes: Routes = [
   },
   {
     path: 'dealer',
-    loadChildren: () => import('./dealer/dealer.module').then( m => m.DealerPageModule)
+    loadChildren: () => import('./dealer/dealer.module').then( m => m.DealerPageModule),
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'visit',
-    loadChildren: () => import('./visit/visit.module').then( m => m.VisitPageModule)
+    loadChildren: () => import('./visit/visit.module').then( m => m.VisitPageModule),
+    canActivate: [AuthGuard]
+
   }
 ];
 

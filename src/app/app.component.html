@@ -3,8 +3,8 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content >
         <ion-list id="inbox-list" >
-         <div style="border-bottom: 1px solid rgb(209, 209, 209);"> <ion-avatar slot="start" class="user-avi" style="height: 30%; width: 30%;">
-            <img src="{{userdata.imagename}}" style="height: 80px;">
+          <div *ngIf="userlogin == 1" style="border-bottom: 1px solid rgb(209, 209, 209);"> <ion-avatar slot="start" class="user-avi" style="height: 30%; width: 30%;">
+            <img src="{{userdata.imagename}}" style="height: 80px;" onerror="this.src='/assets/img/placeholder.png';">
           </ion-avatar>
           <ion-list-header> {{userdata.first_name}}</ion-list-header>
           <ion-note> {{userdata.email1}}</ion-note>
@@ -22,7 +22,9 @@
             
           </ion-menu-toggle>
 
-          <div *ngIf="userlogin == 1">
+         
+
+        <div *ngIf="userlogin == 1">
           <ion-menu-toggle auto-hide="false" *ngIf="roleId == 'H11'">
             <ion-item routerDirection="root"  routerLink="/dealer" lines="none" detail="false" >
               <ion-icon slot="start" ios="people-outline" md="people-sharp" ></ion-icon>

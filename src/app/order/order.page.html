@@ -8,21 +8,22 @@
 </ion-header>
 
 
-<ion-content>
-    <div class="main">
+<ion-content (ionScroll)="onScroll($event)">
+  <!--   <div class="main">
         <div class=pay>
          ORDER NO:
-          <!-- {{orderid.orders.orderNumber}} -->
+          {{orderid.orders.orderNumber}}
         </div>
         <div class="order_detail">
          <a href="/order-cancel"> Order Details</a>
         </div>
-    </div>
+    </div> -->
+    <h3 class="ion-text-center" *ngIf="orderlistdata.length == 0 ">{{Error_message}}</h3>
 
     <mat-card class="od1" *ngFor="let orderlist of orderlistdata;let i = index">
       <div class="main_detail" *ngFor="let listdata of orderlist.productDetails;let i = index">
         <div class="img">
-            <img  class="img1" src={{listdata.imagePath}} />
+            <img  class="img1" src={{listdata.imagePath}}  onerror="this.src='/assets/img/placeholder.png';"/>
         </div>
           <div class="content" >
        <p style="color: black;">Order Id {{orderlist.id}}
@@ -37,11 +38,22 @@
             <div>
               <i class="fa fa-inr"><b>{{listdata.unit_price}}</b></i>
             </div>
-            <div style="color:#19b0c4;">
-              <br>  <strong>{{orderlist.orderStatus}}</strong><br>
+            <br>
+             <ion-text  *ngIf="orderlist.orderStatus == 'Cancelled'" color="danger">
+                <strong >{{orderlist.orderStatus}}</strong> </ion-text>
 
-              <button (click)="cancelorder(orderlist.id)">Cancel Order</button>
-            </div>
+                <ion-text  *ngIf="orderlist.orderStatus == 'Delivered'" color="success">
+                  <strong >{{orderlist.orderStatus}}</strong> </ion-text>
+
+                  <ion-text  *ngIf="orderlist.orderStatus == 'Created'" color="primary">
+                    <strong >{{orderlist.orderStatus}}</strong> </ion-text>
+
+                    <ion-text  *ngIf="orderlist.orderStatus == 'Approved'" color="success">
+                      <strong >{{orderlist.orderStatus}}</strong> </ion-text>
+                  <br>
+
+              <ion-button (click)="cancelorder(orderlist.id)" *ngIf="orderlist.orderStatus == 'Created' || orderlist.orderStatus == 'Approved'" color="danger" size="small">Cancel Order</ion-button>
+    
         </div>
       </div>
    </mat-card>
@@ -51,5 +63,10 @@
              Bought for Avii
           </div>
       </div> -->
+
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="orderlist($event)" *ngIf="disable==0">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 
   </ion-content>

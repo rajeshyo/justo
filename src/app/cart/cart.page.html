@@ -69,16 +69,16 @@
  <ion-card *ngFor="let productlist of cart;let i = index">
       <div class="main" style="background-color: cadetblue;">
          <div class="pic">
-            <img src={{productlist.imagePath}}  style="height: 90px; width: 50%;" >
+            <img src={{productlist.imagePath}} (click)="productdetails(productlist.id)" style="height: 90px; width: 50%;" onerror="this.src='/assets/img/placeholder.png';" >
            
             <!-- <img   src="{{final.imagePath}}"/> -->
          </div>
 
          <div class="content" style="color: #fff;" >
           
-            <button (click)="qtyde(productlist.id)">-</button>
-          <input type="number" style="width: 60px;" [(ngModel)]="user.cartqty">
-          <button (click)="qtyin(productlist.id)">+</button>
+            <button (click)="qtyde(i)">-</button>
+          <input type="number" style="width: 60px; color: black;" [value]="productlist.quantity" [(ngModel)]="productlist.quantity">
+          <button (click)="qtyin(i)">+</button>
             <br>
             Qty {{this.deals1}}
             <br>
@@ -202,7 +202,7 @@
         <div class="women-bag">
                <span style="color: black;"> <strong>Total MRP</strong></span>
             <div class="content1"  style="text-align: right; width: 50%;color: black;">
-               <i class="fa fa-inr"><strong>1199</strong></i> 
+               <i class="fa fa-inr"><strong>{{subtotal}}</strong></i> 
             </div>
         </div> 
  
@@ -226,7 +226,7 @@
           <div class="total">
                <b>Total</b>
              <div class="content1"  >
-                <i class="fa fa-inr"><b>1199</b></i>
+                <i class="fa fa-inr"><b>{{total}}</b></i>
              </div>
          </div>
       </mat-card>
